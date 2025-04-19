@@ -2,35 +2,6 @@
 @section('body')
 
     <body>
-    <!--====== Preloader Part Start ======-->
-
-    <!--====== Preloader Part Ends ======-->
-    <!--====== Breadcrumbs Part Start ======-->
-    <section class="breadcrumbs-wrapper pt-50 pb-50 bg-primary-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div
-                        class="breadcrumbs-style breadcrumbs-style-1 d-md-flex justify-content-between align-items-center"
-                    >
-                        <div class="breadcrumb-left">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Category
-                                </li>
-                            </ol>
-                        </div>
-                        <div class="breadcrumb-right">
-                            <h5 class="heading-5 font-weight-500">Category</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--====== Breadcrumbs Part Ends ======-->
-
     <!--====== Category Part Start ======-->
     <section class="category-wrapper pt-50">
         <div class="container">
