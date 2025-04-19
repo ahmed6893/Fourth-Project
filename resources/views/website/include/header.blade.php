@@ -64,7 +64,7 @@
                                     </select>
                                 </li>
                                 <li>
-                                    <a href="#0"><i class="mdi mdi-account"></i>Login</a>
+                                    <a href="{{route('customer.login')}}"><i class="mdi mdi-account"></i>Login</a>
                                 </li>
                             </ul>
                         </div>

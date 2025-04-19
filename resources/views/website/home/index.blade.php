@@ -1,5 +1,6 @@
 @extends('website.master')
 @section('body')
+
     <!--====== Header Style 1 Part Start ======-->
     <section class="header-style-1">
         <div class="header-big">
@@ -31,7 +32,7 @@
             <div class="header-min-item product-style-25 bg_cover"
                  style="background-image: url({{asset('/')}}website/assets/images/header-1/header-min-1.jpg);">
                 <div class="product-content">
-                    <h4 class="title"><a href="product-details-page.html">Metro 38 Date</a></h4>
+                    <h4 class="title"><a href="$">Metro 38 Date</a></h4>
                     <p>Reference 1102</p>
                     <a href="javascript:void(0)" class="main-btn primary-btn-border"> <img src="{{asset('/')}}website/assets/images/icon-svg/cart-5.svg" alt="">$
                         399</a>
@@ -49,7 +50,6 @@
         </div>
     </section>
     <!--====== Header Style 1 Part Ends ======-->
-
     <!--====== Content Card Style 4 Part Start ======-->
     <section class="content-card-style-4 pt-70 pb-100">
         <div class="container">
@@ -123,7 +123,7 @@
                             </a>
                         </div>
                         <div class="product-content text-center">
-                            <h4 class="title"><a href="product-details-page.html">Metro 38 Date</a></h4>
+                            <h4 class="title"><a href="{{route('product.details')}}">Metro 38 Date</a></h4>
                             <p>Reference 1102</p>
                             <a href="javascript:void(0)" class="main-btn secondary-1-btn">
                                 <img src="{{asset('/')}}website/assets/images/icon-svg/cart-7.svg" alt="">
