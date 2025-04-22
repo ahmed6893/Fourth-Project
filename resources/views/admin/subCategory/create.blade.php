@@ -12,13 +12,13 @@
                 <<!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Create New Category </h1>
+                        <h1 class="page-title">Create New Sub Category </h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Apps</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Category</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create Category</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Sub Category</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Sub Category</li>
                         </ol>
                     </div>
                 </div>
@@ -40,38 +40,47 @@
                                 <!-- Header Title + Right Side Button -->
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <h4 class="m-0">All Category</h4>
-                                    <a href="{{ route('category.index') }}" class="btn btn-sm btn-outline-secondary">
+                                    <a href="{{ route('sub-category.index') }}" class="btn btn-sm btn-outline-secondary">
                                          Back to List
                                     </a>
                                 </div>
-                                <form action="{{route('category.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('sub-category.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                <!-- Category Name -->
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Category Name</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" name="category_id">
+                                            <option value="">--Select Category--</option>
+                                            @foreach ($categories as $category )
+                                                <option value="{{$category->id}}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label for="category-name" class="form-label text-muted">Category Name:</label>
-                                        <input id="category-name" name="name" type="text" class="form-control text-dark" placeholder="Enter Category Name">
+                                        <label for="category-name" class="form-label text-muted">Sub Category Name:</label>
+                                        <input id="category-name" name="name" type="text" class="form-control text-dark" placeholder="Enter Sub Category Name">
                                     </div>
                                 </div>
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <label for="category-status" class="form-label text-muted">Category Status:</label>
+                                                <label for="category-status" class="form-label text-muted">Sub Category Status:</label>
                                                 <select name="status" id="category-status" class="form-control">
                                                     <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
                                                     <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <!-- Category Description -->
+                                        
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <label class="form-label text-muted">Category Description</label>
+                                        <label class="form-label text-muted">Sub Category Description</label>
                                         <textarea class="form-control" name="description" rows="4" placeholder="Write something..."></textarea>
                                     </div>
                                 </div>
 
-                                <!-- Image Upload -->
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label class="form-label text-muted">Add Image:</label>

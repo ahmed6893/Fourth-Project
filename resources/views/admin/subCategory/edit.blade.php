@@ -12,13 +12,13 @@
                 <<!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Edit Category</h1>
+                        <h1 class="page-title">Edit Sub Category</h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Apps</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Category</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit Category</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Sub Category</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Edit Sub Category</li>
                         </ol>
                     </div>
                 </div>
@@ -38,27 +38,33 @@
 
                                 <!-- Header Title + Right Side Button -->
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h4 class="m-0">All Category</h4>
-                                    <a href="{{ route('category.index') }}" class="btn btn-sm btn-outline-secondary">
+                                    <h4 class="m-0">All Sub Category</h4>
+                                    <a href="{{ route('sub-category.index') }}" class="btn btn-sm btn-outline-secondary">
                                         Back to List
                                     </a>
                                 </div>
-                                <form action="{{route('category.update',$category->id)}}" method="POST">
+                                <form action="{{route('sub-category.update',$subCategory->id)}}" method="POST">
                                     @method('PUT')
                                     @csrf
-                                <!-- Category Name -->
+                                <select class="form-control" name="category_id">
+                                    <option value=""> -- Select Category --</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}"
+                                            {{$subCategory->category_id == $category->id ? 'selected' : ''}}> {{$category->name}}</option>
+                                    @endforeach
+                                </select>
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label for="category-name" class="form-label text-muted">Category Name:</label>
-                                        <input id="category-name" name="name" type="text" value="{{$category->name}}" class="form-control text-dark" placeholder="Enter Category Name">
+                                        <label for="category-name" class="form-label text-muted">Sub Category Name:</label>
+                                        <input id="category-name" name="name" type="text" value="{{$subCategory->name}}" class="form-control text-dark" placeholder="Enter Category Name">
                                     </div>
                                 </div>
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <label for="category-status" class="form-label text-muted">Category Status:</label>
+                                                <label for="category-status" class="form-label text-muted">Sub Category Status:</label>
                                                 <select name="status" id="category-status" class="form-control">
-                                                    <option value="1" {{ (old('status', $category->status) == 1) ? 'selected' : '' }}>Active</option>
-                                                    <option value="0" {{ (old('status', $category->status) == 0) ? 'selected' : '' }}>Inactive</option>
+                                                    <option value="1" {{ (old('status', $subCategory->status) == 1) ? 'selected' : '' }}>Active</option>
+                                                    <option value="0" {{ (old('status', $subCategory->status) == 0) ? 'selected' : '' }}>Inactive</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -67,7 +73,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-12">
                                         <label class="form-label text-muted">Category Description</label>
-                                        <textarea class="form-control" name="description" rows="4" placeholder="Write something...">{{$category->description}}</textarea>
+                                        <textarea class="form-control" name="description" rows="4" placeholder="Write something...">{{$subCategory->description}}</textarea>
                                     </div>
                                 </div>
 
@@ -77,9 +83,9 @@
                                                 <label class="form-label text-muted">Add Image:</label>
                                                 <input type="file" class="dropify" data-bs-height="100" name="image" />
 
-                                                @if($category->category_image)
+                                                @if($subCategory->subCategory_image)
                                                     <div class="mt-2">
-                                                        <img src="{{ asset($category->category_image) }}" width="100" height="80" alt="Current Image">
+                                                        <img src="{{ asset($subCategory->subCategory_image) }}" width="100" height="80" alt="Current Image">
                                                     </div>
                                                 @endif
                                             </div>
@@ -88,7 +94,7 @@
                                 <!-- Buttons -->
                                 <div class="text-end">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fe fe-check-circle"></i> Update Category
+                                        <i class="fe fe-check-circle"></i> Update Sub Category
                                     </button>
                                 </div>
                                 </form>
