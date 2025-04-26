@@ -39,6 +39,8 @@
                     <ul class="slide-menu">
                         <li><a href="{{ route('category.index') }}" class="slide-item">Category</a></li>
                         <li><a href="{{ route('sub-category.index') }}" class="slide-item">Sub Category</a></li>
+                        <li><a href="{{ route('brand.index') }}" class="slide-item">Brand</a></li>
+                        <li><a href="{{ route('unit.index') }}" class="slide-item">Unit</a></li>
                     </ul>
                 </li>
                 
