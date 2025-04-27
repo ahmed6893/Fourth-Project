@@ -41,6 +41,9 @@
                         <li><a href="{{ route('sub-category.index') }}" class="slide-item">Sub Category</a></li>
                         <li><a href="{{ route('brand.index') }}" class="slide-item">Brand</a></li>
                         <li><a href="{{ route('unit.index') }}" class="slide-item">Unit</a></li>
+                        <li><a href="{{ route('color.index') }}" class="slide-item">Color</a></li>
+                        <li><a href="{{ route('size.index') }}" class="slide-item">Size</a></li>
+                        <li><a href="{{ route('courier.index') }}" class="slide-item">Courier</a></li>
                     </ul>
                 </li>
                 

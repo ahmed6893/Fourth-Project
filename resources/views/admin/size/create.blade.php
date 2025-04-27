@@ -12,13 +12,13 @@
                 <<!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Create New Unit </h1>
+                        <h1 class="page-title">Create New Size </h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Apps</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Units</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create Unit</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Size</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Size</li>
                         </ol>
                     </div>
                 </div>
@@ -39,33 +39,30 @@
 
                                 <!-- Header Title + Right Side Button -->
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h4 class="m-0">All Unit</h4>
-                                    <a href="{{ route('unit.index') }}" class="btn btn-sm btn-outline-secondary">
+                                    <h4 class="m-0">All Size</h4>
+                                    <a href="{{ route('size.index') }}" class="btn btn-sm btn-outline-secondary">
                                          Back to List
                                     </a>
                                 </div>
-                                <form action="{{route('unit.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('size.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label class="form-label text-muted">Unit Name:</label>
-                                        <input name="name" type="text" class="form-control text-dark" placeholder="Enter Unit Name">
+                                        <label class="form-label text-muted">Size Name:</label>
+                                        <input name="name" type="text" class="form-control text-dark" placeholder="Enter Size Name">
                                     </div>
                                 </div>
-                                        <div class="row mb-4">
-                                            <div class="col-md-6">
-                                                <label class="form-label text-muted">Unit Status:</label>
-                                                <select name="status" class="form-control">
-                                                    <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
-                                                    <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- Category Description -->
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Size Code:</label>
+                                        <input name="code" type="text" class="form-control text-dark" placeholder="Enter Size Name">
+                                    </div>
+                                </div>
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <label class="form-label text-muted">Unit Description</label>
+                                        <label class="form-label text-muted">Size Description</label>
                                         <textarea class="form-control" name="description" rows="4" placeholder="Write something..."></textarea>
                                     </div>
                                 </div>

@@ -39,38 +39,36 @@
                                 <!-- Header Title + Right Side Button -->
                                 <div class="d-flex align-items-center justify-content-between mb-4">
                                     <h4 class="m-0">All Unit</h4>
-                                    <a href="{{ route('unit.index') }}" class="btn btn-sm btn-outline-secondary">
+                                    <a href="{{ route('color.index') }}" class="btn btn-sm btn-outline-secondary">
                                         Back to List
                                     </a>
                                 </div>
-                                <form action="{{route('unit.update',$unit->id)}}" method="POST">
+                                <form action="{{route('color.update',$color->id)}}" method="POST">
                                     @method('PUT')
                                     @csrf
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label for="category-name" class="form-label text-muted">Unit Name:</label>
-                                        <input id="category-name" name="name" type="text" value="{{$unit->name}}" class="form-control text-dark" placeholder="Enter Brand Name">
+                                        <label for="category-name" class="form-label text-muted">Color Name:</label>
+                                        <input id="category-name" name="name" type="text" value="{{$color->name}}" class="form-control text-dark" placeholder="Enter Color Name">
                                     </div>
                                 </div>
-                                        <div class="row mb-4">
-                                            <div class="col-md-6">
-                                                <label class="form-label text-muted">Unit Status:</label>
-                                                <select name="status" class="form-control">
-                                                    <option value="1" {{ (old('status', $unit->status) == 1) ? 'selected' : '' }}>Active</option>
-                                                    <option value="0" {{ (old('status', $unit->status) == 0) ? 'selected' : '' }}>Inactive</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label text-muted">Color Code:</label>
+                                        <input name="code" type="color" value="{{$color->code}}" class="form-control text-dark" placeholder="Enter Color Name">
+                                    </div>
+                                </div>
+                                        
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <label class="form-label text-muted">Unit Description</label>
-                                        <textarea class="form-control" name="description" rows="4" placeholder="Write something...">{{$unit->description}}</textarea>
+                                        <label class="form-label text-muted">Color Description</label>
+                                        <textarea class="form-control" name="description" rows="4" placeholder="Write something...">{{$color->description}}</textarea>
                                     </div>
                                 </div>
                                 <!-- Buttons -->
                                 <div class="text-end">
                                     <button class="btn btn-primary" type="submit">
-                                        <i class="fe fe-check-circle"></i> Update Unit
+                                        <i class="fe fe-check-circle"></i> Update Color
                                     </button>
                                 </div>
                                 </form>
