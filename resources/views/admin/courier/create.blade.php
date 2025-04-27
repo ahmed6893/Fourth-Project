@@ -12,13 +12,13 @@
                 <<!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Create New Unit </h1>
+                        <h1 class="page-title">Create New Courier </h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Apps</li>
-                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Units</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Create Unit</li>
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">All Courier</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Courier</li>
                         </ol>
                     </div>
                 </div>
@@ -39,22 +39,23 @@
 
                                 <!-- Header Title + Right Side Button -->
                                 <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <h4 class="m-0">All Unit</h4>
-                                    <a href="{{ route('unit.index') }}" class="btn btn-sm btn-outline-secondary">
+                                    <h4 class="m-0">All Courier</h4>
+                                    <a href="{{ route('courier.index') }}" class="btn btn-sm btn-outline-secondary">
                                          Back to List
                                     </a>
                                 </div>
-                                <form action="{{route('unit.store')}}" method="POST" enctype="multipart/form-data">
+                                <form action="{{route('courier.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
+                                
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label class="form-label text-muted">Unit Name:</label>
-                                        <input name="name" type="text" class="form-control text-dark" placeholder="Enter Unit Name">
+                                        <label class="form-label text-muted">Courier Name:</label>
+                                        <input name="name" type="text" class="form-control text-dark" placeholder="Enter Courier Name">
                                     </div>
                                 </div>
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <label class="form-label text-muted">Unit Status:</label>
+                                                <label class="form-label text-muted">Courier Status:</label>
                                                 <select name="status" class="form-control">
                                                     <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
                                                     <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>
@@ -62,10 +63,15 @@
                                             </div>
                                         </div>
 
-                                        <!-- Category Description -->
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <label class="form-label text-muted">Add Image:</label>
+                                                <input type="file" class="dropify" data-bs-height="100" name="image" />
+                                            </div>
+                                        </div>
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <label class="form-label text-muted">Unit Description</label>
+                                        <label class="form-label text-muted">Courier Description</label>
                                         <textarea class="form-control" name="description" rows="4" placeholder="Write something..."></textarea>
                                     </div>
                                 </div>
@@ -77,9 +83,7 @@
                                     </button>
                                 </div>
                                 </form>
-
                             </div>
-
                         </div>
                     </div>
                 </div>

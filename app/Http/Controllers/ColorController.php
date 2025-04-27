@@ -45,7 +45,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        return view('admin.color.edit');
+        return view('admin.color.edit',['color'=> $color]);
     }
 
     /**

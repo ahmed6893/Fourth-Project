@@ -55,7 +55,7 @@
                                 <div class="row mb-4">
                                     <div class="col-md-6">
                                         <label class="form-label text-muted">Color Code:</label>
-                                        <input name="name" type="color" class="form-control text-dark">
+                                        <input name="code" type="color" class="form-control text-dark">
                                     </div>
                                 </div>
                                 <div class="row mb-4">
