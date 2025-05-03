@@ -9,9 +9,9 @@ use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductSize;
 use App\Models\Size;
+use App\Models\Color;
 use App\Models\SubCategory;
 use App\Models\Unit;
-use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,6 +19,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
+    
     public function index()
     {
         return view('admin.product.index',['products' => Product::all()]);
@@ -42,14 +43,15 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public productId;
-    
+    public $productId ;
     public function store(Request $request)
     {
         $this->productId =Product::saveNewProduct($request);
-        ProductColor::saveProductColor($requset->color,$this->productId);
-        ProductSize::saveProductSize($requset->size,$this->productId);
-        OtherImages::productOtherImages($requset->file('other_images'),$this->productId);
+
+        ProductColor::saveProductColor   ($request->color, $this->productId);
+        ProductSize ::saveProductSize    ( $request->size,  $this->productId);
+        OtherImages ::productOtherImages ($request->file('other_images'),$this->productId);
+
         return back()->with('success','Your Product Info Created Successfully');
     }
 

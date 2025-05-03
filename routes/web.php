@@ -13,7 +13,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\CourierController;
-
+use App\Http\Controllers\ProductController;
 
 Route::get('/',               [EstoreController::class,'index'])            ->name('home');
 Route::get('/estore',         [EstoreController::class,'product'])          ->name('estore');
@@ -38,5 +38,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('color',        ColorController::class);
     Route::resource('size',         SizeController::class);
     Route::resource('courier',      CourierController::class);
+    Route::resource('product',      ProductController::class);
 
 });

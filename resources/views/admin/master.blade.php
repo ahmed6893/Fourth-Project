@@ -118,10 +118,12 @@
 <script src="{{asset('/')}}admin/assets/switcher/js/switcher.js"></script>
 <!-- INTERNAL Summernote Editor js -->
 <script src="{{asset('/')}}admin/assets/plugins/summernote-editor/summernote1.js"></script>
+<script src="{{asset('/')}}admin/assets/js/summernote.js"></script>
 
 <!-- FILE UPLOAD JS -->
 <script src="{{asset('/')}}admin/assets/plugins/fileuploads/js/fileupload.js"></script>
 <script src="{{asset('/')}}admin/assets/plugins/fileuploads/js/file-upload.js"></script>
+
 
 </body>
 

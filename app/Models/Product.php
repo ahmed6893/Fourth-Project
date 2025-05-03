@@ -14,7 +14,7 @@ class Product extends Model
         'short_description', 'long_description', 'product_image',
         'sales_count', 'hit_count', 'featured_status', 'status'
     ];
-    public static $product ,$image ,$imageName,$imageUrl,$directory,$extension;
+    public static $product ,$image ,$imageName,$imageUrl,$directory,$extension ,$productImages;
 
     public static function saveNewProduct($request)
     {
@@ -40,7 +40,7 @@ class Product extends Model
 
     public static function getImageUrl($request)
     {
-        self::$image = $request->file('image')
+        self::$image = $request->file('image');
         self::$extension =self::$image->extension();
         self::$imageName = rand(000,999).'.'.self::$extension;
         self::$directory ='admin/images/productImage/';
@@ -68,7 +68,7 @@ class Product extends Model
             'category_id'       => $request->category_id,
             'sub_category_id'   => $request->sub_category_id,
             'brand_id'          => $request->brand_id,
-            'unit_id'           => $requset->unit_id,
+            'unit_id'           => $request->unit_id,
             'name'              => $request->name,                  
             'slug'              => Str::slug($request->name),            
             'code'              => $request->code,
@@ -86,13 +86,13 @@ class Product extends Model
     public static function deleteProduct($id)
     {
         self::$product = Product::find($id);
-        self::$productImages = ProductImage::where('product_Id', $id)->get();
+        self::$productImages = OtherImages::where('product_Id', $id)->get();
 
-        foreach(self::$productImages as self::$productImage){
-            if(file_exists(self::$productImage->product_image)){
-                unlink(self::$productImage->product_image);
+        foreach(self::$productImages as $productImage){
+            if(file_exists($productImage->product_image)){
+                unlink($productImage->product_image);
             }
-            self::$productImage->delete();
+            $productImage->delete();
         }
         if(self::$product){
             if(file_exists(self::$product->product_image)){
@@ -129,6 +129,6 @@ class Product extends Model
     }
     public function productImages()
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(OtherImages::class);
     }
 }
