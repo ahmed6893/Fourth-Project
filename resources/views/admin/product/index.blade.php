@@ -57,30 +57,32 @@
                                         <thead class="table-head">
                                         <tr>
                                             <th class="bg-transparent border-bottom-0 text-center w-5">S.no</th>
+                                            <th class="bg-transparent border-bottom-0">Image</th>
                                             <th class="bg-transparent border-bottom-0">Product Name</th>
-                                            <th class="bg-transparent border-bottom-0">Category</th>
-                                            <th class="bg-transparent border-bottom-0">Sub Category</th>
+                                            <th class="bg-transparent border-bottom-0">Code</th>
+                                            <th class="bg-transparent border-bottom-0">Regular Price</th>
+                                            <th class="bg-transparent border-bottom-0">Stock</th>
                                             <th class="bg-transparent border-bottom-0">Status</th>
                                             <th class="bg-transparent border-bottom-0 no-btn">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody class="table-body">
                                         
-                                        @foreach($subCategories as $subCategory)
+                                        @foreach($products as $product)
                                           
                                             <tr>
                                                 <td class="text-muted fs-15 fw-semibold text-center">{{$loop->iteration}}</td>
                                                 <td>
-                                                    <img src="{{asset($subCategory->subCategory_image)}}" alt="Image" width="50" height="50">
+                                                    <img src="{{asset($product->product_image)}}" alt="Image" width="50" height="50">
                                                 </td>
                                                 <td>
-                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$subCategory->category->name}}</h6>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$product->category->name}}</h6>
                                                 </td>
                                                 <td>
-                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$subCategory->name}}</h6>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$product->name}}</h6>
                                                 </td>
                                                 <td>
-                                                    @if($subCategory->status == 1)
+                                                    @if($product->status == 1)
                                                         <span class="mb-0 mt-1 badge rounded-pill text-success bg-success-transparent">Active</span>
                                                     @else
                                                         <span class="mb-0 mt-1 badge rounded-pill text-warning bg-warning-transparent">Inactive</span>
@@ -88,10 +90,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-stretch">
-                                                        <a class="btn btn-sm btn-outline-success border me-2" href="{{route('sub-category.edit',$subCategory->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                        <a class="btn btn-sm btn-outline-success border me-2" href="{{route('product.edit',$product->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Edit">
                                                             <i class="fe fe-edit-2"></i>
                                                         </a>
-                                                        <form action="{{route('sub-category.destroy',$subCategory->id)}}" method="POST">
+                                                        <form action="{{route('product.destroy',$product->id)}}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
                                                             <button type="submit" class="btn btn-sm btn-outline-secondary border me-2" data-bs-toggle="tooltip" data-bs-original-title="Delete">
