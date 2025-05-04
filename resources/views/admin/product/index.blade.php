@@ -60,7 +60,7 @@
                                             <th class="bg-transparent border-bottom-0">Image</th>
                                             <th class="bg-transparent border-bottom-0">Product Name</th>
                                             <th class="bg-transparent border-bottom-0">Code</th>
-                                            <th class="bg-transparent border-bottom-0">Regular Price</th>
+                                            <th class="bg-transparent border-bottom-0">Selling Price</th>
                                             <th class="bg-transparent border-bottom-0">Stock</th>
                                             <th class="bg-transparent border-bottom-0">Status</th>
                                             <th class="bg-transparent border-bottom-0 no-btn">Action</th>
@@ -80,6 +80,14 @@
                                                 </td>
                                                 <td>
                                                     <h6 class="mb-0 fs-14 fw-semibold">{{$product->name}}</h6>
+                                                </td>
+                                                </td>
+                                                <td>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$product->code}}</h6>
+                                                </td>
+                                                </td>
+                                                <td>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$product->selling_price}}</h6>
                                                 </td>
                                                 <td>
                                                     @if($product->status == 1)

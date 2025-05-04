@@ -18,7 +18,7 @@ class ProductSize extends Model
         }
     }
 
-    public static function updateSize($sizes , $id)
+    public static function updateProductSize($sizes , $id)
     {
         self::$productSizes = ProductSize::where('product_id', $id)->get();
         foreach (self::$productSizes as $productSize) {

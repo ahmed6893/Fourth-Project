@@ -33,6 +33,7 @@ class Product extends Model
             "stock_amount"      =>$request->stock_amount,
             "short_description" => $request->short_description,
             "long_description"  => $request->long_description,
+            "status"            => $request->status,
             "product_image"     =>self::getImageUrl($request),
         ]);
         return self::$product->id;
@@ -79,6 +80,7 @@ class Product extends Model
             'stock_amount'      => $request->stock_amount,
             'short_description' => $request->short_description,
             'long_description'  => $request->long_description,
+            'status'            => $request->status,
             'product_image'     => $imageUrl,
         ]);
     }
