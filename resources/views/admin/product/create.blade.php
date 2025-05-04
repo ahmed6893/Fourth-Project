@@ -11,13 +11,13 @@
                 <!-- PAGE-HEADER -->
                 <div class="page-header">
                     <div>
-                        <h1 class="page-title">Edit Project</h1>
+                        <h1 class="page-title">Create Project</h1>
                     </div>
                     <div class="ms-auto pageheader-btn">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Apps</li>
                             <li class="breadcrumb-item"><a href="javascript:void(0);">Projects</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Edit Project</li>
+                            <li class="breadcrumb-item active" aria-current="page">Create Project</li>
                         </ol>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                                 </div>
                                         <div class="row mb-4">
                                             <div class="col-md-6">
-                                                <label for="category-status" class="form-label text-muted">Sub Category Status:</label>
+                                                <label for="category-status" class="form-label text-muted">Status:</label>
                                                 <select name="status" id="category-status" class="form-control">
                                                     <option value="1" {{ old('status') == 1 ? 'selected' : '' }}>Active</option>
                                                     <option value="0" {{ old('status') == 0 ? 'selected' : '' }}>Inactive</option>

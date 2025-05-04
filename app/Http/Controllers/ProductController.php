@@ -84,11 +84,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        Product::updateProduct($product->id,$request);
+        Product::updateProduct($request,$product->id);
         ProductColor::updateProductColor($request->color,$product->id);
         ProductSize::updateProductSize($request->size,$product->id);
-        if($request->hasFile('other_image')){
-            OtherImages::updateOtherImages($request->file('other_image'),$product->id);   
+        if($request->hasFile('other_images')){
+            OtherImages::updateOtherImages($request->file('other_images'),$product->id);   
         }
         return back()->with('success','Product Has Updated Successfully');
         
