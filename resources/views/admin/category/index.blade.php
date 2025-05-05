@@ -79,7 +79,7 @@
                                                     <a class="btn btn-sm btn-outline-success border me-2" href="{{route('category.edit',$category->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Edit">
                                                         <i class="fe fe-edit-2"></i>
                                                     </a>
-                                                    <form action="{{route('category.destroy',$category->id))}}" method="POST">
+                                                    <form action="{{route('category.destroy',$category->id)}}" method="POST">
                                                         @csrf
                                                         <button type="submit" class="btn btn-sm btn-outline-secondary border me-2" data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                                             <i class="fe fe-trash-2"></i>
