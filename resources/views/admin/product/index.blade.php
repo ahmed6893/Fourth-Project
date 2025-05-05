@@ -58,9 +58,10 @@
                                         <tr>
                                             <th class="bg-transparent border-bottom-0 text-center w-5">S.no</th>
                                             <th class="bg-transparent border-bottom-0">Image</th>
+                                            <th class="bg-transparent border-bottom-0">Category Name</th>
                                             <th class="bg-transparent border-bottom-0">Product Name</th>
                                             <th class="bg-transparent border-bottom-0">Code</th>
-                                            <th class="bg-transparent border-bottom-0">Selling Price</th>
+                                            <th class="bg-transparent border-bottom-0">Price</th>
                                             <th class="bg-transparent border-bottom-0">Stock</th>
                                             <th class="bg-transparent border-bottom-0">Status</th>
                                             <th class="bg-transparent border-bottom-0 no-btn">Action</th>
@@ -87,7 +88,12 @@
                                                 </td>
                                                 </td>
                                                 <td>
-                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$product->selling_price}}</h6>
+                                                    <h6 class="mb-0 fs-14 fw-semibold ">Regular: {{$product->regular_price}}</h6>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">Selling: {{$product->selling_price}}</h6>
+                                                </td>
+                                                </td>
+                                                <td>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$product->stock_amount}}</h6>
                                                 </td>
                                                 <td>
                                                     @if($product->status == 1)
@@ -98,6 +104,9 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex align-items-stretch">
+                                                        <a class="btn btn-sm btn-outline-dark border me-2" href="{{route('product.show',$product->id)}}" data-bs-toggle="tooltip" >
+                                                            <i class="fe fe-eye"></i>
+                                                        </a>
                                                         <a class="btn btn-sm btn-outline-success border me-2" href="{{route('product.edit',$product->id)}}" data-bs-toggle="tooltip" data-bs-original-title="Edit">
                                                             <i class="fe fe-edit-2"></i>
                                                         </a>

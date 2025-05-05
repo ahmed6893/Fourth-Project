@@ -108,24 +108,6 @@
                                         </div>
                                         <p class="text">Oculus Go</p>
                                     </div>
-                                    <div class="single-item">
-                                        <div class="items-image">
-                                            <img
-                                                src="{{asset('/')}}website/assets/images/product-details-1/product-items-2.jpg"
-                                                alt="product"
-                                            />
-                                        </div>
-                                        <p class="text">Oculus Quest</p>
-                                    </div>
-                                    <div class="single-item">
-                                        <div class="items-image">
-                                            <img
-                                                src="{{asset('/')}}website/assets/images/product-details-1/product-items-3.jpg"
-                                                alt="product"
-                                            />
-                                        </div>
-                                        <p class="text">Oculus Rift S</p>
-                                    </div>
                                 </div>
                             </div>
 
