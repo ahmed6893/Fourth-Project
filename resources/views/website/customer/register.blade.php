@@ -11,7 +11,7 @@
                         class="login-registration-style-1 registration text-center mt-50"
                     >
                         <h1 class="heading-4 font-weight-500 title">
-                            Create an Account with
+                            Create an Account
                         </h1>
                         <div class="login-registration-form pt-10">
                             <form action="#">
@@ -20,13 +20,13 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-input">
-                                                <input type="text" placeholder="First Name" />
+                                                <input type="text" placeholder="First Name" name="first_name"/>
                                                 <i class="mdi mdi-account"></i>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-input form">
-                                                <input type="text" placeholder="Last Name" />
+                                                <input type="text" placeholder="Last Name" name="last_name"/>
                                             </div>
                                         </div>
                                     </div>
@@ -34,8 +34,15 @@
                                 <div class="single-form form-default form-border text-left">
                                     <label>Email Address</label>
                                     <div class="form-input">
-                                        <input type="email" placeholder="user@email.com" />
+                                        <input type="email" placeholder="user@email.com" name="email"/>
                                         <i class="mdi mdi-email"></i>
+                                    </div>
+                                </div>
+                                <div class="single-form form-default form-border text-left">
+                                    <label>Phone Number</label>
+                                    <div class="form-input">
+                                        <input type="tel" pattern="01[0-9]{9}" required placeholder="e.g. 01XXXXXXXXX" name="phone"/>
+                                        <i class="mdi mdi-phone"></i>
                                     </div>
                                 </div>
                                 <div class="single-form form-default form-border text-left">
@@ -45,6 +52,7 @@
                                             id="password-3"
                                             type="password"
                                             placeholder="Password"
+                                            name="password"
                                         />
                                         <i class="mdi mdi-lock"></i>
                                         <span
@@ -53,40 +61,14 @@
                                         ></span>
                                     </div>
                                 </div>
-                                <div class="single-checkbox checkbox-style-3">
-                                    <input type="checkbox" id="login-3" />
-                                    <label for="login-3"><span></span> </label>
-                                    <p>I accept the Terms of Use.</p>
-                                </div>
                                 <div class="single-form">
-                                    <button class="main-btn primary-btn">Sign up</button>
+                                    <button class="main-btn primary-btn" type="submit">Sign up</button>
                                 </div>
                             </form>
                         </div>
                         <p class="login">
-                            Have an account? <a href="login-page.html">Log in</a>
+                            Have an account? <a href="{{ 'customer.login' }}">Log in</a>
                         </p>
-                        <p class="account">Or</p>
-                        <ul>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="facebook-login-registration"
-                                >
-                                    <i class="lni lni-facebook-original"></i>
-                                    <span>Login with Facebook</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="javascript:void(0)"
-                                    class="google-login-registration"
-                                >
-                                    <img src="assets/images/google-logo.svg" alt="" />
-                                    <span>Login with Google</span>
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

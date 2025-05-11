@@ -13,37 +13,8 @@
                                 <div class="product-image-active-1">
                                     <div class="single-image">
                                         <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/product-1.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-image">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/product-2.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-image">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/product-3.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-image">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/product-4.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-image">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/product-5.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-image">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/product-3.jpg"
+                                            id="main-image"
+                                            src="{{ asset($product->product_image) }}"
                                             alt=""
                                         />
                                     </div>
@@ -51,133 +22,78 @@
                             </div>
                             <div class="product-thumb-image">
                                 <div class="product-thumb-image-active-1">
-                                    <div class="single-thumb">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/thunb-1.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/thunb-2.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/thunb-3.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/thunb-4.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/thunb-5.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div class="single-thumb">
-                                        <img
-                                            src="{{asset('/')}}website/assets/images/product-details-1/thunb-3.jpg"
-                                            alt=""
-                                        />
-                                    </div>
+                                    @foreach ($product->productImages as $productImage)
+                                        <div class="single-thumb">
+                                            <img
+                                                class="thumb-image"
+                                                src="{{ asset($productImage->image) }}"
+                                                alt=""
+                                                style="cursor: pointer; width: 70px;"
+                                            />
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="product-details-content mt-45">
-                            <p class="sub-title">All-In-One VR</p>
-                            <h2 class="title">Oculus VR</h2>
+                        <form action="{{ route('cart.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $product->id }}">
+                            <div class="product-details-content mt-45">
+                                <p class="sub-title">{{$product->category->name}}</p>
+                                <h2 class="title">{{$product->name}}</h2>
+                                <div class="product-select-wrapper flex-wrap">
+                                    <div class="select-item">
+                                        <h6 class="select-title">Select Color:</h6>
+                                        <ul class="color-select">
+                                            @foreach($product->productColors as $key => $productColor)
+                                                <li
+                                                    data-color="{{ $productColor->color->name }}"
+                                                    style="background-color: {{ $productColor->color->name }};"
+                                                    class="{{ $key == 0 ? 'active' : '' }}"
+                                                ></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                    <div class="select-item">
+                                        <h6 class="select-title">Select Size:</h6>
+                                        <ul class="size-select">
+                                            @foreach($product->productSizes as $key => $productSize)
+                                                <li class="size-option {{ $key == 0 ? 'active' : '' }}" data-size="{{ $productSize->size->name }}">
+                                                    {{ $productSize->size->name }}
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
 
-                            <div class="product-items flex-wrap">
-                                <h6 class="item-title">Select Your Oculus:</h6>
-                                <div class="items-wrapper">
-                                    <div class="single-item active">
-                                        <div class="items-image">
-                                            <img
-                                                src="{{asset('/')}}website/assets/images/product-details-1/product-items-1.jpg"
-                                                alt="product"
-                                            />
+                                    <div class="select-item">
+                                        <h6 class="select-title">Select Quantity:</h6>
+
+                                        <div class="select-quantity">
+                                            <button type="button" id="sub" class="sub">
+                                                <i class="mdi mdi-minus"></i>
+                                            </button>
+                                            <input type="text" name="qty" value="1" />
+                                            <button type="button" id="add" class="add">
+                                                <i class="mdi mdi-plus"></i>
+                                            </button>
                                         </div>
-                                        <p class="text">Oculus Go</p>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="product-select-wrapper flex-wrap">
-                                <div class="select-item">
-                                    <h6 class="select-title">
-                                        Select Color: <span>Grey</span>
-                                    </h6>
-                                    <ul class="color-select">
-                                        <li class="active" data-color="#EFEFEF"></li>
-                                        <li data-color="#FAE5EC"></li>
-                                        <li data-color="#4C4C4C"></li>
-                                    </ul>
+                                <div class="product-price">
+                                    <h6 class="price-title">Price:</h6>
+                                    <p class="sale-price">TK:{{$product->regular_price}}</p>
+                                    <p class="regular-price">TK:{{$product->selling_price}}</p>
                                 </div>
-                                <div class="select-item">
-                                    <h6 class="select-title">Memory (GB):</h6>
-                                    <div class="size-select">
-                                        <select>
-                                            <option value="">32gb</option>
-                                            <option value="">64gb</option>
-                                            <option value="">128 gb</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="select-item">
-                                    <h6 class="select-title">Select Quantity:</h6>
 
-                                    <div class="select-quantity">
-                                        <button type="button" id="sub" class="sub">
-                                            <i class="mdi mdi-minus"></i>
-                                        </button>
-                                        <input type="text" value="1" />
-                                        <button type="button" id="add" class="add">
-                                            <i class="mdi mdi-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="select-item">
-                                    <h6 class="select-title">Select Shipping Country:</h6>
-                                    <div class="country-select">
-                                        <select>
-                                            <option value="0">-- Select Country --</option>
-                                            <option value="1">Bangladesh</option>
-                                            <option value="2">india</option>
-                                            <option value="3">Pakistan</option>
-                                            <option value="4">Australia</option>
-                                            <option value="5">Canada</option>
-                                            <option value="6">Spain</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="product-price">
-                                <h6 class="price-title">Price:</h6>
-                                <p class="sale-price">$ 149 USD</p>
-                                <p class="regular-price">$ 179 USD</p>
-                            </div>
-
-                            <div class="product-btn">
-                                <a href="{{route('product.cart')}}" class="main-btn primary-btn">
+                                <button type="submit" class="main-btn primary-btn">
                                     <img src="{{asset('/')}}website/assets/images/icon-svg/cart-4.svg" alt="" />
                                     Add to cart
-                                </a>
-                                <a href="javascript:void(0)" class="main-btn secondary-1-btn">
-                                    <img src="{{asset('/')}}website/assets/images/icon-svg/cart-8.svg" alt="" />
-                                    Buy Now
-                                </a>
+                                </button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -248,22 +164,7 @@
                                     <div class="reviews-title">
                                         <h4 class="title">Oculus VR</h4>
                                     </div>
-                                    <p class="mb-15 pt-30">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Maxime quod sequi vitae atque perspiciatis voluptas
-                                        recusandae explicabo ea dolores numquam ratione, obcaecati
-                                        ullam, ipsam minima vero nostrum nesciunt facere
-                                        laudantium? Facere animi rem veniam quibusdam nam sed ex
-                                        maxime laboriosam a vero nesciunt tenetur, eius autem
-                                        fugiat quod expedita dignissimos.
-                                    </p>
-                                    <p class="mb-30">
-                                        Repellendus, doloribus illum expedita, dolorem voluptas
-                                        doloremque voluptatibus, magni tempora laboriosam deserunt
-                                        suscipit labore dolorum aperiam cum veniam accusamus?
-                                        Consequatur dolore facere perferendis repellat, modi in
-                                        consectetur ipsum atque quos natus.
-                                    </p>
+                                    <p class="mb-15 pt-30">{!! $product->long_description !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -730,7 +631,27 @@
     </section>
     <!--====== Subscribe Part Ends ======-->
 
+    <script>
+        document.querySelectorAll('.thumb-image').forEach(function(thumb) {
+            thumb.addEventListener('click', function() {
+                const mainImage = document.getElementById('main-image');
+                mainImage.src = this.src;
+            });
+        });
+    </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sizeOptions = document.querySelectorAll('.size-option');
+
+        sizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                sizeOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+            });
+        });
+    });
+</script>
     </body>
 
 @endsection

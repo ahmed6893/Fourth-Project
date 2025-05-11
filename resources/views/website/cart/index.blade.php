@@ -9,6 +9,16 @@
                 <div class="col-lg-12">
                     <div class="checkout-style-1">
                         <div class="checkout-table table-responsive">
+                            @if(session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+                            @if(session('delete'))
+                                <div class="alert alert-danger">
+                                    {{ session('delete') }}
+                                </div>
+                            @endif
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -19,198 +29,60 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                  @foreach ($products as $product)
+                                  <tr>
                                     <td>
                                         <div class="product-cart d-flex">
                                             <div class="product-thumb">
                                                 <img
-                                                    src="{{asset('/')}}website/assets/images/product-cart/product-1.png"
+                                                    src="{{asset($product->options->image)}}"
                                                     alt="Product"
+                                                    width="50px"
+                                                    height="50px"
                                                 />
                                             </div>
                                             <div class="product-content media-body">
                                                 <h5 class="title">
-                                                    <a href="product-details-page.html"
-                                                    >Hollow Port</a
-                                                    >
+                                                    <a href="product-details-page.html">{{ $product->name }}</a>
                                                 </h5>
-                                                <span>UG 0123</span>
+                                                <span>Size:{{ $product->options->size }}</span>
+                                                <span>Color:{{ $product->options->color }}</span>
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="product-quantity d-inline-flex">
-                                            <button type="button" id="sub" class="sub">
-                                                <i class="mdi mdi-minus"></i>
-                                            </button>
-                                            <input type="text" value="0" />
-                                            <button type="button" id="add" class="add">
-                                                <i class="mdi mdi-plus"></i>
-                                            </button>
-                                        </div>
+                                        <form action="{{ route('cart.update', $product->rowId) }}" method="POST" class="d-flex align-items-center">
+                                            @csrf
+                                             <div class="product-quantity d-inline-flex">
+                                                <button type="button" class="qty-btn sub">-</button>
+                                                <input type="text" name="qty" value="{{ $product->qty }}" class="qty-input" style="width: 60px; text-align:center;" />
+                                                <button type="button" class="qty-btn add">+</button>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary ms-2">Update</button>
+                                        </form>
+
                                     </td>
                                     <td>
-                                        <p class="price">$36.00</p>
+                                        <p class="price">{{ $product->price }}</p>
                                     </td>
                                     <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a class="favorite" href="javascript:void(0)"
-                                                ><i class="mdi mdi-heart-outline"></i
-                                                    ></a>
-                                            </li>
-                                            <li>
-                                                <a class="delete" href="javascript:void(0)"
-                                                ><i class="mdi mdi-delete"></i
-                                                    ></a>
-                                            </li>
-                                        </ul>
+                                        <form action="{{ route('cart.destroy', $product->rowId) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <ul class="action">
+                                                <li>
+                                                    <button type="submit" class="delete" style="background: none; border: none; cursor: pointer;">
+                                                        <i class="mdi mdi-delete"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <div class="product-cart d-flex">
-                                            <div class="product-thumb">
-                                                <img
-                                                    src="{{asset('/')}}website/assets/images/product-cart/product-2.png"
-                                                    alt="Product"
-                                                />
-                                            </div>
-                                            <div class="product-content media-body">
-                                                <h5 class="title">
-                                                    <a href="product-details-page.html"
-                                                    >Hollow Port</a
-                                                    >
-                                                </h5>
-                                                <span>UG 0123</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-quantity d-inline-flex">
-                                            <button type="button" id="sub" class="sub">
-                                                <i class="mdi mdi-minus"></i>
-                                            </button>
-                                            <input type="text" value="0" />
-                                            <button type="button" id="add" class="add">
-                                                <i class="mdi mdi-plus"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="price">$36.00</p>
-                                    </td>
-                                    <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a class="favorite" href="javascript:void(0)"
-                                                ><i class="mdi mdi-heart-outline"></i
-                                                    ></a>
-                                            </li>
-                                            <li>
-                                                <a class="delete" href="javascript:void(0)"
-                                                ><i class="mdi mdi-delete"></i
-                                                    ></a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="product-cart d-flex">
-                                            <div class="product-thumb">
-                                                <img
-                                                    src="{{asset('/')}}website/assets/images/product-cart/product-3.png"
-                                                    alt="Product"
-                                                />
-                                            </div>
-                                            <div class="product-content media-body">
-                                                <h5 class="title">
-                                                    <a href="product-details-page.html"
-                                                    >Hollow Port</a
-                                                    >
-                                                </h5>
-                                                <span>UG 0123</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-quantity d-inline-flex">
-                                            <button type="button" id="sub" class="sub">
-                                                <i class="mdi mdi-minus"></i>
-                                            </button>
-                                            <input type="text" value="0" />
-                                            <button type="button" id="add" class="add">
-                                                <i class="mdi mdi-plus"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="price">$36.00</p>
-                                    </td>
-                                    <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a class="favorite" href="javascript:void(0)"
-                                                ><i class="mdi mdi-heart-outline"></i
-                                                    ></a>
-                                            </li>
-                                            <li>
-                                                <a class="delete" href="javascript:void(0)"
-                                                ><i class="mdi mdi-delete"></i
-                                                    ></a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="product-cart d-flex">
-                                            <div class="product-thumb">
-                                                <img
-                                                    src="{{asset('/')}}website/assets/images/product-cart/product-4.png"
-                                                    alt="Product"
-                                                />
-                                            </div>
-                                            <div class="product-content media-body">
-                                                <h5 class="title">
-                                                    <a href="product-details-page.html"
-                                                    >Hollow Port</a
-                                                    >
-                                                </h5>
-                                                <span>UG 0123</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="product-quantity d-inline-flex">
-                                            <button type="button" id="sub" class="sub">
-                                                <i class="mdi mdi-minus"></i>
-                                            </button>
-                                            <input type="text" value="0" />
-                                            <button type="button" id="add" class="add">
-                                                <i class="mdi mdi-plus"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p class="price">$36.00</p>
-                                    </td>
-                                    <td>
-                                        <ul class="action">
-                                            <li>
-                                                <a class="favorite" href="javascript:void(0)"
-                                                ><i class="mdi mdi-heart-outline"></i
-                                                    ></a>
-                                            </li>
-                                            <li>
-                                                <a class="delete" href="javascript:void(0)"
-                                                ><i class="mdi mdi-delete"></i
-                                                    ></a>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
+                                  @endforeach
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -231,19 +103,19 @@
                             <div class="checkout-total">
                                 <div class="single-total">
                                     <p class="value">Subtotal Price:</p>
-                                    <p class="price">$144.00</p>
+                                    <p class="price">${{ Cart::subtotal(0,'','') }}</p>
                                 </div>
                                 <div class="single-total">
                                     <p class="value">Shipping Cost (+):</p>
-                                    <p class="price">$10.50</p>
+                                    <p class="price">$60</p>
                                 </div>
                                 <div class="single-total">
-                                    <p class="value">Discount (-):</p>
-                                    <p class="price">$10.50</p>
+                                    <p class="value">Tax Amount (10%):</p>
+                                    <p class="price">${{ round((int)Cart::subtotal(0,'','')*0.10) }}</p>
                                 </div>
                                 <div class="single-total total-payable">
                                     <p class="value">Total Payable:</p>
-                                    <p class="price">$165.00</p>
+                                    <p class="price">${{ (int)Cart::subtotal(0,'','')+round((int)Cart::subtotal(0,'','')*0.10)+ 60 }}</p>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +128,7 @@
                                 >
                             </div>
                             <div class="single-btn">
-                                <a href="{{route('product.checkout')}}" class="main-btn primary-btn"
+                                <a href="" class="main-btn primary-btn"
                                 >Pay now</a
                                 >
                             </div>
@@ -296,40 +168,21 @@
         </div>
     </section>
     <!--====== Clients Logo Part Ends ======-->
+    <script>
+        document.querySelectorAll('.qty-btn').forEach(function(btn) {
+            btn.addEventListener('click', function () {
+                let input = this.parentElement.querySelector('.qty-input');
+                let value = parseInt(input.value);
 
-    <!--====== Subscribe Part Start ======-->
-    <section class="subscribe-section pt-70 pb-70 bg-primary-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 mx-auto">
-                    <div class="heading text-center">
-                        <h1 class="heading-1 font-weight-700 text-white mb-10">
-                            Subscribe Newsletter
-                        </h1>
-                        <p class="gray-3">
-                            Be the first to know when new products drop and get
-                            behind-the-scenes content straight.
-                        </p>
-                    </div>
-                    <div class="subscribe-form">
-                        <form action="#">
-                            <div class="single-form form-default">
-                                <label class="text-white-50">Enter your email address</label>
-                                <div class="form-input">
-                                    <input type="text" placeholder="user@email.com" />
-                                    <i class="mdi mdi-account"></i>
-                                    <button class="main-btn primary-btn">
-                                        <span class="mdi mdi-send"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--====== Subscribe Part Ends ======-->
+                if (this.classList.contains('add')) {
+                    input.value = value + 1;
+                } else if (this.classList.contains('sub')) {
+                    if (value > 1) input.value = value - 1;
+                }
+            });
+        });
+    </script>
+
     </body>
 
 @endsection

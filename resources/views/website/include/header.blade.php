@@ -66,6 +66,9 @@
                                 <li>
                                     <a href="{{route('customer.login')}}"><i class="mdi mdi-account"></i>Login</a>
                                 </li>
+                                <li>
+                                    <a href="{{route('customer.register')}}"><i class="mdi mdi-account-box"></i> Register</a>
+                                </li>
                             </ul>
                         </div>
                         <!-- navbar top right Ends -->
@@ -82,7 +85,7 @@
                     >
                         <!-- desktop logo Start -->
                         <div class="desktop-logo d-lg-block">
-                            <a href="#0"
+                            <a href="{{ route('home') }}"
                             ><img src="{{asset('/')}}website/assets/images/logo.svg" alt="Logo"
                                 /></a>
                         </div>
@@ -102,20 +105,36 @@
                                         <i class="mdi mdi-close"></i>
                                     </a>
                                 </div>
-
                                 <li class="menu-item-has-children">
                                     <a href="#0" class="collapsed" data-toggle="collapse" data-target="#allCategories"
                                        aria-controls="allCategories" aria-expanded="false" aria-label="Toggle navigation">
                                         All Categories <i class="lni lni-search-alt"></i>
                                     </a>
                                     <ul class="collapse sub-menu" id="allCategories">
-                                        <li><a href="{{route('estore')}}">All Products</a></li>
-                                        <li><a href="category.html">Vegetables</a></li>
-                                        <li><a href="category.html">Dairy</a></li>
-                                        <li><a href="category.html">Meat</a></li>
-                                        <li><a href="category.html">Snacks</a></li>
+                                        @foreach ($categories as $category)
+                                            <li class="menu-item-has-children">
+                                                <a href="{{ route('estore',$category->id) }}">
+                                                    @if (count($category->subCategories)>0)
+                                                    <i class="lni lni-menu"></i>
+                                                    @endif
+
+                                                     {{ $category->name }}
+                                                </a>
+
+                                                @if ($category->subcategories->count() > 0)
+                                                    <ul class="sub-menu">
+                                                        @foreach ($category->subcategories as $subCategory)
+                                                            <li>
+                                                                <a href="{{ route('subCategory.estore',$subCategory->id) }}">{{ $subCategory->name }}</a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </li>
+
                                 <li class="position-static menu-item-has-children">
                                     <a
                                         href="#0"
