@@ -10717,3 +10717,36 @@ p {
 .clients-logo-section .client-logo-active .slick-slide:focus {
   outline: 0;
 }
+
+
+.size-select {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+.size-select .size-option {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    user-select: none;
+    background-color: #fff;
+    color: #333;
+}
+
+.size-select .size-option:hover {
+    border-color: #000;
+    background-color: #f0f0f0;
+}
+
+.size-select .size-option.active {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}

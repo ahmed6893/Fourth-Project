@@ -7,46 +7,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="filter-style-1 mt-0">
-                        <div class="filter-title">
-                            <h4 class="title">Filter</h4>
-                        </div>
-                        <div class="filter-btn">
-                            <a class="main-btn primary-btn" href="javascript:void(0)"
-                            >Reset</a
-                            >
-                        </div>
-                    </div>
-
-                    <div class="filter-style-2">
-                        <div class="filter-title">
-                            <a
-                                class="title"
-                                data-toggle="collapse"
-                                href="#pricingOne"
-                                role="button"
-                                aria-expanded="false"
-                            >
-                                Pricing Range
-                            </a>
-                        </div>
-                        <div class="collapse show" id="pricingOne">
-                            <div class="price-range">
-                                <div class="price-amount">
-                                    <div class="amount-input">
-                                        <label>Minimum Price</label>
-                                        <input type="text" id="minAmount" />
-                                    </div>
-                                    <div class="amount-input">
-                                        <label>Maximum Price</label>
-                                        <input type="text" id="maxAmount" />
-                                    </div>
-                                </div>
-                                <div id="slider-range" class="slider-range"></div>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="filter-style-3">
                         <div class="filter-title">
                             <a
@@ -54,8 +14,7 @@
                                 data-toggle="collapse"
                                 href="#type"
                                 role="button"
-                                aria-expanded="false"
-                            >
+                                aria-expanded="false">
                                 Type
                             </a>
                         </div>
@@ -229,18 +188,13 @@
                                 >
                                     <div class="row">
                                         <div class="col-lg-12">
+                                            @foreach ($products as $product )
                                             <div class="product-style-7 mt-30">
                                                 <div class="product-image">
                                                     <div class="product-active">
                                                         <div class="product-item active">
                                                             <img
-                                                                src="{{asset('/')}}website/assets/images/product-4/product-1.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-4/product-2.jpg"
+                                                                src="{{asset($product->product_image)}}"
                                                                 alt="product"
                                                             />
                                                         </div>
@@ -249,137 +203,17 @@
                                                 <div class="product-content">
                                                     <ul class="product-meta">
                                                         <li>
-                                                            <a
-                                                                class="add-wishlist"
-                                                                href="javascript:void(0)"
-                                                            >
-                                                                <i class="mdi mdi-heart-outline"></i>
-                                                                Add to Favorite
-                                                            </a>
-                                                        </li>
-                                                        <li>
                                                             <span><i class="mdi mdi-star"></i> 4.5/5</span>
                                                         </li>
                                                     </ul>
                                                     <h4 class="title">
-                                                        <a href="{{route('product.details')}}">Metro 38 Date</a>
+                                                        <a href="{{route('product.details',$product->id)}}">{{ $product->name }}</a>
                                                     </h4>
-                                                    <p>Reference 1102</p>
-                                                    <span class="price">$ 399</span>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn primary-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-4.svg"
-                                                            alt=""
-                                                        />
-                                                        Add to Cart
-                                                    </a>
+                                                    <p>{{ $product->category->name }}</p>
+                                                    <span class="price">{{ $product->selling_price }}</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="product-style-7 mt-30">
-                                                <div class="product-image">
-                                                    <div class="product-active">
-                                                        <div class="product-item active">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-4/product-3.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-4/product-4.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content">
-                                                    <ul class="product-meta">
-                                                        <li>
-                                                            <a
-                                                                class="add-wishlist"
-                                                                href="javascript:void(0)"
-                                                            >
-                                                                <i class="mdi mdi-heart-outline"></i>
-                                                                Add to Favorite
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <span><i class="mdi mdi-star"></i> 4.5/5</span>
-                                                        </li>
-                                                    </ul>
-                                                    <h4 class="title">
-                                                        <a href="product-details-page.html">Man's Shoe</a>
-                                                    </h4>
-                                                    <p>Reference 1102</p>
-                                                    <span class="price">$ 399</span>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn primary-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-4.svg"
-                                                            alt=""
-                                                        />
-                                                        Add to Cart
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="product-style-7 mt-30">
-                                                <div class="product-image">
-                                                    <div class="product-active">
-                                                        <div class="product-item active">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-4/product-5.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-4/product-6.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="product-content">
-                                                    <ul class="product-meta">
-                                                        <li>
-                                                            <a
-                                                                class="add-wishlist"
-                                                                href="javascript:void(0)"
-                                                            >
-                                                                <i class="mdi mdi-heart-outline"></i>
-                                                                Add to Favorite
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <span><i class="mdi mdi-star"></i> 4.5/5</span>
-                                                        </li>
-                                                    </ul>
-                                                    <h4 class="title">
-                                                        <a href="product-details-page.html">T Shirt 23</a>
-                                                    </h4>
-                                                    <p>Reference 1102</p>
-                                                    <span class="price">$ 399</span>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn primary-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-4.svg"
-                                                            alt=""
-                                                        />
-                                                        Add to Cart
-                                                    </a>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -391,165 +225,33 @@
                                 >
                                     <div class="row">
                                         <div class="col-lg-6 col-sm-6">
+                                            @foreach ($products as $product)
                                             <div class="product-style-1 mt-30">
                                                 <div class="product-image">
                                                     <div class="product-active">
                                                         <div class="product-item active">
                                                             <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-1.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-2.jpg"
-                                                                alt="product"
-                                                            />
+                                                                src="{{asset($product->product_image)}}"
+                                                                alt="product"/>
                                                         </div>
                                                     </div>
-                                                    <a class="add-wishlist" href="javascript:void(0)">
-                                                        <i class="mdi mdi-heart-outline"></i>
-                                                    </a>
                                                 </div>
                                                 <div class="product-content text-center">
                                                     <h4 class="title">
-                                                        <a href="product-details-page.html"
-                                                        >Metro 38 Date</a
-                                                        >
+                                                        <a href="{{ route('product.details',$product->id) }}">{{ $product->name }}</a>
                                                     </h4>
-                                                    <p>Reference 1102</p>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn secondary-1-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-7.svg"
-                                                            alt=""
-                                                        />
-                                                        $ 399
+                                                    <p class="mb-2">{{ $product->category->name }}</p>
+
+                                                    <!-- Price Button -->
+                                                    <a href="{{ route('product.details',$product->id) }}" class="main-btn secondary-1-btn">
+                                                        ৳{{ number_format($product->selling_price) }}
                                                     </a>
                                                 </div>
                                             </div>
+                                            @endforeach
+
                                         </div>
-                                        <div class="col-lg-6 col-sm-6">
-                                            <div class="product-style-1 mt-30">
-                                                <div class="product-image">
-                                                    <div class="product-active">
-                                                        <div class="product-item active">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-5.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-6.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <a class="add-wishlist" href="javascript:void(0)">
-                                                        <i class="mdi mdi-heart-outline"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h4 class="title">
-                                                        <a href="product-details-page.html">Lady Shoe</a>
-                                                    </h4>
-                                                    <p>Reference 1102</p>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn secondary-1-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-7.svg"
-                                                            alt=""
-                                                        />
-                                                        $ 399
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-sm-6">
-                                            <div class="product-style-1 mt-30">
-                                                <div class="product-image">
-                                                    <div class="product-active">
-                                                        <div class="product-item active">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-3.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-4.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <a class="add-wishlist" href="javascript:void(0)">
-                                                        <i class="mdi mdi-heart-outline"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h4 class="title">
-                                                        <a href="product-details-page.html"
-                                                        >Casio 380 Date</a
-                                                        >
-                                                    </h4>
-                                                    <p>Reference 1102</p>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn secondary-1-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-7.svg"
-                                                            alt=""
-                                                        />
-                                                        $ 399
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-sm-6">
-                                            <div class="product-style-1 mt-30">
-                                                <div class="product-image">
-                                                    <div class="product-active">
-                                                        <div class="product-item active">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-7.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                        <div class="product-item">
-                                                            <img
-                                                                src="{{asset('/')}}website/assets/images/product-1/product-8.jpg"
-                                                                alt="product"
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <a class="add-wishlist" href="javascript:void(0)">
-                                                        <i class="mdi mdi-heart-outline"></i>
-                                                    </a>
-                                                </div>
-                                                <div class="product-content text-center">
-                                                    <h4 class="title">
-                                                        <a href="product-details-page.html">Man's Shoe</a>
-                                                    </h4>
-                                                    <p>Reference 1102</p>
-                                                    <a
-                                                        href="javascript:void(0)"
-                                                        class="main-btn secondary-1-btn"
-                                                    >
-                                                        <img
-                                                            src="{{asset('/')}}website/assets/images/icon-svg/cart-7.svg"
-                                                            alt=""
-                                                        />
-                                                        $ 399
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

@@ -15,11 +15,16 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\CourierController;
 use App\Http\Controllers\ProductController;
 
-Route::get('/',               [EstoreController::class,'index'])            ->name('home');
-Route::get('/estore',         [EstoreController::class,'product'])          ->name('estore');
-Route::get('/product/details',[EstoreController::class,'productDetails'])   ->name('product.details');
+Route::get('/',                        [EstoreController::class,'index'])            ->name('home');
+Route::get('/estore/{id}',             [EstoreController::class,'product'])          ->name('estore');
+Route::get('/sub-category-estore/{id}',[EstoreController::class,'subCategoryProduct'])      ->name('subCategory.estore');
+Route::get('/product/details/{id}',    [EstoreController::class,'productDetails'])   ->name('product.details');
 
-Route::get('/product/cart',[CartController::class,'cart'])->name('product.cart');
+Route::get('/product/cart', [CartController::class,'cart'])    ->name('product.cart');
+Route::post('/cart/store',  [CartController::class,'store'])   ->name('cart.store');
+Route::post('/cart/update/{rowId}', [CartController::class,'update'])  ->name('cart.update');
+Route::delete('/cart/destroy/{rowId}',[CartController::class,'destroy']) ->name('cart.destroy');
+
 
 Route::get('/product/checkout',[CheckoutController::class,'checkout'])->name('product.checkout');
 
