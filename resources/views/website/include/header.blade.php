@@ -63,12 +63,21 @@
                                         <option value="6">বাংলা</option>
                                     </select>
                                 </li>
-                                <li>
-                                    <a href="{{route('customer.login')}}"><i class="mdi mdi-account"></i>Login</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('customer.register')}}"><i class="mdi mdi-account-box"></i> Register</a>
-                                </li>
+                                @if (Session('customerId'))
+                                    <li>
+                                        <a href=""><i class="mdi mdi-account"></i>Wellcome{{ Session('customerName') }}</a>
+                                    </li>
+                                    <li>
+                                        <a href=""><i class="mdi mdi-logout"></i>Sign Out</a>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a href="{{route('customer.login')}}"><i class="mdi mdi-account"></i>Login</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('customer.register')}}"><i class="mdi mdi-account-box"></i> Register</a>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                         <!-- navbar top right Ends -->

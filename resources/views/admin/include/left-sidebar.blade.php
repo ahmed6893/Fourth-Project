@@ -35,7 +35,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="..."/></svg>
                         <span class="side-menu__label">Setting Module</span><i class="angle fa fa-angle-right"></i>
                     </a>
-                
+
                     <ul class="slide-menu">
                         <li><a href="{{ route('category.index') }}" class="slide-item">Category</a></li>
                         <li><a href="{{ route('sub-category.index') }}" class="slide-item">Sub Category</a></li>
@@ -51,13 +51,23 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="..."/></svg>
                         <span class="side-menu__label">Product Module</span><i class="angle fa fa-angle-right"></i>
                     </a>
-                
+
                     <ul class="slide-menu">
                         <li><a href="{{ route('product.index') }}" class="slide-item">All Products</a></li>
                         <li><a href="{{ route('product.create') }}" class="slide-item">Create Products</a></li>
                     </ul>
                 </li>
-                
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="..."/></svg>
+                        <span class="side-menu__label">Order Module</span><i class="angle fa fa-angle-right"></i>
+                    </a>
+
+                    <ul class="slide-menu">
+                        <li><a href="{{ route('product.index') }}" class="slide-item">Orders</a></li>
+                    </ul>
+                </li>
+
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
                                                            width="24" height="24" viewBox="0 0 24 24">

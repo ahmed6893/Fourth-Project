@@ -10,11 +10,12 @@
                     <div class="login-registration-style-2 mt-50">
                         <h1 class="heading-4 font-weight-500 title">Login</h1>
                         <div class="login-registration-form pt-10">
-                            <form action="#">
+                            <form action="{{route('customer.login')}}" method="POST">
+                                @csrf
                                 <div class="single-form form-default form-border">
-                                    <label>Email Address</label>
+                                    <label>Email Address or Phone</label>
                                     <div class="form-input">
-                                        <input type="email" placeholder="user@email.com" />
+                                        <input type="text" placeholder="user@email.com" name="email_phone"/>
                                         <i class="mdi mdi-email"></i>
                                     </div>
                                 </div>
@@ -25,6 +26,7 @@
                                             id="password-7"
                                             type="password"
                                             placeholder="Password"
+                                            name="password"
                                         />
                                         <i class="mdi mdi-lock"></i>
                                         <span
@@ -43,34 +45,16 @@
                                     </div>
                                     <a class="forget" href="#">Forget Password?</a>
                                 </div>
-                                <div class="single-form">
-                                    <button class="main-btn primary-btn">Sign in</button>
+                                <div class="single-form text-center">
+                                    <button class="main-btn primary-btn" type="submit">Sign in</button>
                                 </div>
+
                             </form>
                         </div>
                         <div class="text-center">
                             <p class="login">
                                 Don’t have an account? <a href="{{route('customer.register')}}">Sign up</a>
                             </p>
-                            <p class="account mt-25">Or</p>
-                            <ul>
-                                <li>
-                                    <a
-                                        href="javascript:void(0)"
-                                        class="facebook-login-registration"
-                                    >
-                                        <i class="lni lni-facebook-original"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a
-                                        href="javascript:void(0)"
-                                        class="google-login-registration"
-                                    >
-                                        <img src="{{asset('/')}}website/assets/images/google-logo.svg" alt="" />
-                                    </a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

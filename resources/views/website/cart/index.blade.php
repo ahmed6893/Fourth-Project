@@ -128,7 +128,7 @@
                                 >
                             </div>
                             <div class="single-btn">
-                                <a href="" class="main-btn primary-btn"
+                                <a href="{{ route('product.checkout') }}" class="main-btn primary-btn" type="submit"
                                 >Pay now</a
                                 >
                             </div>
