@@ -8,13 +8,13 @@
             <div class="row">
                 <div class="col-lg-6 mx-auto">
                     <div
-                        class="login-registration-style-1 registration text-center mt-50"
-                    >
+                        class="login-registration-style-1 registration text-center mt-50">
                         <h1 class="heading-4 font-weight-500 title">
                             Create an Account
                         </h1>
                         <div class="login-registration-form pt-10">
-                            <form action="#">
+                            <form action="{{ route('customer.register') }}" method="POST">
+                                @csrf
                                 <div class="single-form form-default form-border text-left">
                                     <label>Full Name</label>
                                     <div class="row">

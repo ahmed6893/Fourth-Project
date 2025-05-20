@@ -3,14 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Customer extends Model
+
+class Customer extends Authenticatable
 {
     protected $fillable = ['first_name', 'last_name', 'phone', 'email', 'password'];
 
     public static function saveNewCustomer($request)
     {
-        Customer::create([
+       return Customer::create([
             'first_name' => $request->first_name,
             'last_name'  => $request->last_name,
             'phone'      => $request->phone,

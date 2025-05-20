@@ -13,6 +13,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\ColorController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\CourierController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/',                        [EstoreController::class,'index'])            ->name('home');
@@ -27,9 +28,15 @@ Route::delete('/cart/destroy/{rowId}',[CartController::class,'destroy']) ->name(
 
 
 Route::get('/product/checkout',[CheckoutController::class,'checkout'])->name('product.checkout');
+Route::post('/checkout/new-order',[CheckoutController::class,'newOrder'])->name('new-order');
 
-Route::get('/customer/login',   [CustomerController::class,'login'])    ->name('customer.login');
-Route::get('/product/checkout', [CustomerController::class,'register']) ->name('customer.register');
+Route::get('/complete-order',[CheckoutController::class,'completeOrder'])->name('complete-order');
+
+Route::get('/customer/login',   [CustomerController::class,'login'])            ->name('customer.login');
+Route::post('/customer/login',   [CustomerController::class,'loginCheck'])      ->name('customer.login');
+Route::get('/customer/logout',   [CustomerController::class,'logout'])          ->name('customer.logout');
+Route::get('/customer/register', [CustomerController::class,'register'])        ->name('customer.register');
+Route::post('/customer/register', [CustomerController::class,'saveNewCustomer'])->name('customer.register');
 
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
@@ -44,5 +51,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('size',         SizeController::class);
     Route::resource('courier',      CourierController::class);
     Route::resource('product',      ProductController::class);
+
+
+
+    Route::get('/order' ,                     [OrderController::class,'index'])          ->name('order');
+    Route::get('/order/detail/{id}',          [OrderController::class,'details'])        ->name('order.details');
+    Route::get('/order/edit/{id}',            [OrderController::class,'edit'])           ->name('order.edit');
+    Route::post('/order/update/{id}',         [OrderController::class,'update'])         ->name('order.update');
+    Route::get('/order/invoice/{id}',         [OrderController::class,'invoice'])        ->name('order.invoice');
+    Route::get('/order/download-invoice/{id}',[OrderController::class,'downloadInvoice'])->name('order.download-invoice');
+    Route::delete('/order/destroy/{id}',      [OrderController::class,'destroy'])        ->name('order.destroy');
 
 });

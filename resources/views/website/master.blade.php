@@ -38,6 +38,7 @@
 
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="{{asset('/')}}website/assets/css/style.css">
+    
 
 </head>
 
