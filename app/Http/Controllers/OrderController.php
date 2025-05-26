@@ -23,12 +23,12 @@ class OrderController extends Controller
     public function edit($id)
     {
         return view('admin.order.edit',['order'=> Order::with('customer')->findOrFail($id),
-                                                      'courier'=>Courier::all()
+                                                      'couriers'=>Courier::all()
                                                     ]);
     }
     public function invoice($id)
     {
-        return view('admin.order,invoice',['order'=> Order::findOrFail($id)]);
+        return view('admin.order.invoice',['order'=> Order::findOrFail($id)]);
     }
     public function downloadInvoice($id)
     {

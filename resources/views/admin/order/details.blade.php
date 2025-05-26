@@ -56,8 +56,8 @@
                                         <tr>
                                             <th>Customer Info</th>
                                             <td>
-                                                Name:{{ $order->customer->first_name . $order->customer->last_name }}
-                                                Phone:{{ $order->customer->phone }}
+                                                <b>Name:</b>{{ $order->customer->first_name . $order->customer->last_name }}<br>
+                                                <b>Phone:</b>{{ $order->customer->phone }}
                                             </td>
                                         </tr>
                                         <tr>
@@ -137,7 +137,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($orderDetails as $orderDetail)
+                                            @foreach ($order->orderDetails as $orderDetail)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $orderDetail->product_name }}</td>
@@ -149,7 +149,6 @@
                                                     <td>{{ $orderDetail->product_qty * $orderDetail->product_price }}</td>
                                                 </tr>
                                             @endforeach
-
                                         </tbody>
                                     </table>
                                 </div>

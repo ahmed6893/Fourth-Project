@@ -57,34 +57,42 @@
                                     @csrf
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label  class="form-label text-muted">Customer Info:</label>
+                                        <label  class="form-label text-dark">Customer Info:</label>
                                         <input type="text" value="{{$order->customer->first_name.' '.$order->customer->last_name.' : '.$order->customer->phone}}" class="form-control text-dark" readonly>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
                                     <div class="col-md-6">
-                                        <label  class="form-label text-muted">Order Total:</label>
+                                        <label  class="form-label text-dark">Order Total:</label>
                                         <input type="text" value="{{$order->order_total}}" class="form-control text-dark" readonly>
                                     </div>
                                 </div>
 
-                                <select class="form-control" name="courier_id">
+                            <div class="form-group mb-3">
+                                <label for="courier_id" class="text-dark">Courier</label>
+                                <select class="form-control" name="courier_id" id="courier_id">
                                     <option value=""> -- Select Courier --</option>
                                     @foreach($couriers as $courier)
-                                        <option value="{{$courier->id}}"
-                                            {{$order->courier_id == $courier->id ? 'selected' : ''}}> {{$courier->name}}</option>
+                                        <option value="{{$courier->id}}" {{$order->courier_id == $courier->id ? 'selected' : ''}}>
+                                            {{$courier->name}}
+                                        </option>
                                     @endforeach
                                 </select>
-                                <select class="form-control" name="order_status">
-                                    <option value=""> -- Select Order Status --</option>
-                                    <option value="pending"{{$order->order_status == 'pending' ? 'selected' : ''}}>Pending</option>
-                                    <option value="processing"{{$order->order_status == 'processing' ? 'selected' : ''}}>Processing</option>
-                                    <option value="complete"{{$order->order_status == 'complete' ? 'selected' : ''}}>Complete</option>
-                                    <option value="cancel"{{$order->order_status == 'cancel' ? 'selected' : ''}}>Cancel</option>
-                                </select>
+                            </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="order_status" class="text-dark">Order Status</label>
+                                    <select class="form-control" name="order_status" id="order_status">
+                                        <option value=""> -- Select Order Status --</option>
+                                        <option value="pending" {{$order->order_status == 'pending' ? 'selected' : ''}}>Pending</option>
+                                        <option value="processing" {{$order->order_status == 'processing' ? 'selected' : ''}}>Processing</option>
+                                        <option value="complete" {{$order->order_status == 'complete' ? 'selected' : ''}}>Complete</option>
+                                        <option value="cancel" {{$order->order_status == 'cancel' ? 'selected' : ''}}>Cancel</option>
+                                    </select>
+                                </div>
                                 <div class="row mb-4">
                                     <div class="col-md-12">
-                                        <label class="form-label text-muted">Delivery Address</label>
+                                        <label class="form-label text-dark">Delivery Address</label>
                                         <textarea class="form-control" name="delivery_address" rows="4" >{{$order->delivery_address}}</textarea>
                                     </div>
                                 </div>

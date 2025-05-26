@@ -64,7 +64,7 @@
                     </a>
 
                     <ul class="slide-menu">
-                        <li><a href="{{ route('product.index') }}" class="slide-item">Orders</a></li>
+                        <li><a href="{{ route('order') }}" class="slide-item">Orders</a></li>
                     </ul>
                 </li>
 

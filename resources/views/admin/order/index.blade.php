@@ -56,6 +56,8 @@
                                         <thead class="table-head">
                                         <tr>
                                             <th class="bg-transparent border-bottom-0 text-center w-5">S.no</th>
+                                            <th class="bg-transparent border-bottom-0">Image</th>
+                                            <th class="bg-transparent border-bottom-0">Product Name</th>
                                             <th class="bg-transparent border-bottom-0">Customer</th>
                                             <th class="bg-transparent border-bottom-0">Order Date</th>
                                             <th class="bg-transparent border-bottom-0">Order Total</th>
@@ -67,17 +69,20 @@
                                         <tbody class="table-body">
 
                                         @foreach($orders as $order)
-                                            @foreach ($OrderDetails as $orderDetail)
+                                            @foreach ($order->orderDetails as $orderDetail)
                                                 <tr>
                                                 <td class="text-muted fs-15 fw-semibold text-center">{{$loop->iteration}}</td>
                                                 <td>
-                                                    <img src="{{asset($orderDetail->product_image)}}" alt="Image" width="50" height="50">
+                                                    <img src="{{asset($orderDetail->product_image)}}" alt="NO Image" width="50" height="50">
                                                 </td>
                                                 <td>
                                                     <h6 class="mb-0 fs-14 fw-semibold">{{$orderDetail->product_name}}</h6>
                                                 </td>
                                                 <td>
-                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$order->customer->name}}<br/>{{ $order->customer->phone }}</h6>
+                                                        <h6 class="mb-0 fs-14 fw-semibold">
+                                                            {{ $order->customer->first_name. $order->customer->last_name ?? 'Customer Missing' }}<br/>
+                                                            {{ $order->customer?->phone ?? 'N/A' }}
+                                                        </h6>
                                                 </td>
                                                 <td>
                                                     <h6 class="mb-0 fs-14 fw-semibold">{{$order->order_date}}</h6>
@@ -89,9 +94,12 @@
                                                     <h6 class="mb-0 fs-14 fw-semibold">{{$order->order_status}}</h6>
                                                 </td>
                                                 <td>
+                                                    <h6 class="mb-0 fs-14 fw-semibold">{{$order->payment_method}}</h6>
+                                                </td>
+                                                <td>
                                                     <div class="d-flex align-items-stretch">
-                                                        <a class="btn btn-sm btn-outline-info border me-2" href="{{route('order.detail',$order->id)}}" title="Order Detail">
-                                                            <i class="fe fe-book-bookmark"></i>
+                                                        <a class="btn btn-sm btn-outline-info border me-2" href="{{route('order.details',$order->id)}}" title="Order Detail">
+                                                            <i class="fe fe-bookmark"></i>
                                                         </a>
                                                         <a class="btn btn-sm btn-outline-primary border me-2" href="{{route('order.edit',$order->id)}}" title="Order Edit">
                                                             <i class="fe fe-edit"></i>

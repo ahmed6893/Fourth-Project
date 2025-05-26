@@ -57,7 +57,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/order' ,                     [OrderController::class,'index'])          ->name('order');
     Route::get('/order/detail/{id}',          [OrderController::class,'details'])        ->name('order.details');
     Route::get('/order/edit/{id}',            [OrderController::class,'edit'])           ->name('order.edit');
-    Route::post('/order/update/{id}',         [OrderController::class,'update'])         ->name('order.update');
+    Route::put('/order/update/{id}',         [OrderController::class,'update'])         ->name('order.update');
     Route::get('/order/invoice/{id}',         [OrderController::class,'invoice'])        ->name('order.invoice');
     Route::get('/order/download-invoice/{id}',[OrderController::class,'downloadInvoice'])->name('order.download-invoice');
     Route::delete('/order/destroy/{id}',      [OrderController::class,'destroy'])        ->name('order.destroy');
