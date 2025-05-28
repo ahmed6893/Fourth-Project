@@ -25,8 +25,8 @@ class CartController extends Controller
                     'price'=> $this->product->selling_price,
                     'weight'=>1,
                     'options'=>[
-                        'size'=> $this->product->size,
-                        'code'=> $this->product->code,
+                        'size'=> $request->size,
+                        'code'=> $request->color,
                         'color'=> $this->product->color,
                         'image' => $this->product->product_image,
                     ]

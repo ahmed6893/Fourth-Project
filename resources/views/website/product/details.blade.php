@@ -40,6 +40,8 @@
                         <form action="{{ route('cart.store') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $product->id }}">
+                            <input type="hidden" name="color" id="selectedColor">
+                            <input type="hidden" name="size" id="selectedSize">
                             <div class="product-details-content mt-45">
                                 <p class="sub-title">{{$product->category->name}}</p>
                                 <h2 class="title">{{$product->name}}</h2>
@@ -643,15 +645,42 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const sizeOptions = document.querySelectorAll('.size-option');
+        const sizeInput = document.getElementById('selectedSize');
 
         sizeOptions.forEach(option => {
             option.addEventListener('click', () => {
                 sizeOptions.forEach(opt => opt.classList.remove('active'));
                 option.classList.add('active');
+
+                sizeInput.value = option.getAttribute('data-size');
             });
         });
+        const activeSize = document.querySelector('.size-option.active');
+        if (activeSize) {
+            sizeInput.value = activeSize.getAttribute('data-size');
+        }
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const colorOptions = document.querySelectorAll('.color-select li');
+        const colorInput = document.getElementById('selectedColor');
+
+        colorOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                colorOptions.forEach(opt => opt.classList.remove('active'));
+                option.classList.add('active');
+                colorInput.value = option.getAttribute('data-color');
+            });
+        });
+
+        const activeColor = document.querySelector('.color-select li.active');
+        if (activeColor) {
+            colorInput.value = activeColor.getAttribute('data-color');
+        }
+    });
+</script>
+
     </body>
 
 @endsection
