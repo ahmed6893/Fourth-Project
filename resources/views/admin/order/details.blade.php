@@ -123,16 +123,16 @@
                         <div class="card">
                             <div class="card-body project-list-table-container">
                                 <div class="table-responsive">
-                                    <table>
+                                    <table class="table table-bordered table-striped align-middle text-center">
                                         <thead>
                                             <tr>
-                                                <th>SL </th>
+                                                <th>SL</th>
                                                 <th>Product Name</th>
-                                                <th>Product Code </th>
-                                                <th>Product Size </th>
+                                                <th>Product Code</th>
+                                                <th>Product Size</th>
                                                 <th>Product Color</th>
                                                 <th>Unit Price</th>
-                                                <th>Product Quantity</th>
+                                                <th>Quantity</th>
                                                 <th>Total Price</th>
                                             </tr>
                                         </thead>
@@ -143,10 +143,10 @@
                                                     <td>{{ $orderDetail->product_name }}</td>
                                                     <td>{{ $orderDetail->product_code }}</td>
                                                     <td>{{ $orderDetail->product_size }}</td>
-                                                    <td>{{ $orderDetail->product_code }}</td>
-                                                    <td>{{ $orderDetail->product_price }}</td>
+                                                    <td>{{ $orderDetail->product_color }}</td>
+                                                    <td>{{ number_format($orderDetail->product_price, 2) }}</td>
                                                     <td>{{ $orderDetail->product_qty }}</td>
-                                                    <td>{{ $orderDetail->product_qty * $orderDetail->product_price }}</td>
+                                                    <td>{{ number_format($orderDetail->product_qty * $orderDetail->product_price, 2) }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

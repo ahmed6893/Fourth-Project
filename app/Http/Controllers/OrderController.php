@@ -6,6 +6,7 @@ use App\Models\Courier;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetails;
+use Illuminate\Support\Facades\PDF;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -32,7 +33,8 @@ class OrderController extends Controller
     }
     public function downloadInvoice($id)
     {
-        return view('admin.order.download-invoice',['order'=> Order::findOrFail($id)]);
+        $pdf = PDF::loadView('admin.order.download-invoice',['order'=> Order::findOrFail($id)]);
+        return $pdf->stream();
     }
 
 
@@ -81,6 +83,6 @@ class OrderController extends Controller
         $orderDetail->delete();
        }
         Order::find($id)->delete();
-        return redirect('')->with('delete','');
+        return back()->with('delete','An Customer Order is Deleted');
     }
 }

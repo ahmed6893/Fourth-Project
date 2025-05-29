@@ -107,7 +107,7 @@
                                                         <a class="btn btn-sm btn-outline-success border me-2" href="{{route('order.invoice',$order->id)}}" title="Order Invoice">
                                                             <i class="fe fe-book"></i>
                                                         </a>
-                                                        <a class="btn btn-sm btn-outline-secondary border me-2" href="{{route('order.download-invoice',$order->id)}}" title="Order Download Invoice">
+                                                        <a class="btn btn-sm btn-outline-secondary border me-2" href="{{route('order.download-invoice',$order->id)}}" title="Order Download Invoice" target="_blank">
                                                             <i class="fe fe-download"></i>
                                                         </a>
                                                         <form action="{{route('order.destroy',$order->id)}}" method="POST">

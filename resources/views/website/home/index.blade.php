@@ -105,9 +105,10 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
+                @foreach ($products as $product)
                 <div class="col-lg-4 col-sm-6">
-                    @foreach ($products as $product)
                     <div class="product-style-1 mt-30">
                         <div class="product-image">
                             <span class="icon-text text-style-1">NEW</span>
@@ -128,9 +129,11 @@
                             </a>
                         </div>
                     </div>
-                    @endforeach
+
                 </div>
+                @endforeach
             </div>
+
         </div>
     </section>
     <!--====== Product Style 1 Part Ends ======-->

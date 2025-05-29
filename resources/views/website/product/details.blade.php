@@ -86,8 +86,8 @@
 
                                 <div class="product-price">
                                     <h6 class="price-title">Price:</h6>
-                                    <p class="sale-price">TK:{{$product->regular_price}}</p>
-                                    <p class="regular-price">TK:{{$product->selling_price}}</p>
+                                    <p class="sale-price">TK:{{$product->selling_price}}</p>
+                                    <p class="regular-price">TK:{{$product->regular_price}}</p>
                                 </div>
 
                                 <button type="submit" class="main-btn primary-btn">
