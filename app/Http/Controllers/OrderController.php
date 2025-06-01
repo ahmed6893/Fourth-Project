@@ -6,7 +6,7 @@ use App\Models\Courier;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetails;
-use Illuminate\Support\Facades\PDF;
+use PDF;
 
 use function PHPUnit\Framework\returnSelf;
 
@@ -23,6 +23,10 @@ class OrderController extends Controller
     }
     public function edit($id)
     {
+        if(Order::find($id)->order_status == 'complete')
+        {
+            return back()->with('delete','Sorry it Connnot be Edited');
+        }
         return view('admin.order.edit',['order'=> Order::with('customer')->findOrFail($id),
                                                       'couriers'=>Courier::all()
                                                     ]);
@@ -33,7 +37,7 @@ class OrderController extends Controller
     }
     public function downloadInvoice($id)
     {
-        $pdf = PDF::loadView('admin.order.download-invoice',['order'=> Order::findOrFail($id)]);
+        $pdf = PDF::loadView('admin.order.download-invoice',['order'=> Order::find($id)]);
         return $pdf->stream();
     }
 
@@ -78,11 +82,17 @@ class OrderController extends Controller
     public $orderDetails;
     public function destroy($id)
     {
-       $this->orderDetails = OrderDetails::where('order_id',$id)->get();
-       foreach ($this->orderDetails as $orderDetail) {
-        $orderDetail->delete();
-       }
+      if(Order::find($id)->order_status =='cancel')
+      {
+          $this->orderDetails = OrderDetails::where('order_id',$id)->get();
+             foreach ($this->orderDetails as $orderDetail) {
+                  $orderDetail->delete();
+                               }
         Order::find($id)->delete();
         return back()->with('delete','An Customer Order is Deleted');
+      }
+      else{
+        return back()->with('delete','Sorry.. It Cannot be Delete');
+      }
     }
 }

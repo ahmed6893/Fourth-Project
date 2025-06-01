@@ -1,112 +1,181 @@
-@extends('admin.master')
-@section('body')
-    <body class="ltr app sidebar-mini">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: DejaVu Sans, sans-serif;
+            font-size: 12px;
+            color: #333;
+        }
 
-        <!-- PAGE -->
-		<div class="page">
-			<div class="page-main">
-                <!--app-content open-->
-                <div class="app-content main-content mt-0">
-                    <div class="side-app">
+        h1, h3 {
+            margin: 0;
+            padding: 0;
+        }
 
-                        <!-- CONTAINER -->
-                        <div class="main-container container-fluid">
+        .page-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
+        .breadcrumb {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 12px;
+        }
 
-							<!-- PAGE-HEADER -->
-							<div class="page-header">
-								<div>
-									<h1 class="page-title">Invoice-Details</h1>
-								</div>
-								<div class="ms-auto pageheader-btn">
-									<ol class="breadcrumb">
-										<li class="breadcrumb-item">Apps</li>
-										<li class="breadcrumb-item"><a href="javascript:void(0);">Invoices</a></li>
-										<li class="breadcrumb-item active" aria-current="page">Invoice Details</li>
-									</ol>
-								</div>
-							</div>
-							<!-- PAGE-HEADER END -->
+        .breadcrumb li {
+            display: inline;
+            margin-right: 5px;
+        }
 
-							<!-- ROW-1 OPEN -->
-							<div class="row">
-								<div class="col-md-12">
-									<div class="card">
-										<div class="card-body">
-											<div class="clearfix">
-												<div class="float-start">
-													<h3 class="card-title mb-0">#INV-773</h3>
-												</div>
-												<div class="float-end">
-													<h3 class="card-title">Date: 21-10-2021</h3>
-												</div>
-											</div>
-											<hr>
-											<div class="row">
-												<div class="col-lg-6 ">
-													<p class="h3">Invoice Form:</p>
-													<address>
-														Street, Line<br>
-														State, City<br>
-														Country, Postal Code<br>
-														invoice@spruko.com
-													</address>
-												</div>
-												<div class="col-lg-6 text-end">
-													<p class="h3">Invoice To:</p>
-													<address>
-														Street Address<br>
-														State, City<br>
-														Country, Postal Code<br>
-														invoice@spruko.com
-													</address>
-												</div>
-											</div>
-											<div class="table-responsive push">
-												<table class="table table-bordered table-hover mb-0 text-nowrap border-bottom">
-													<tbody><tr class=" ">
-														<th class="text-center"></th>
-														<th>Item</th>
-														<th class="text-center">Quantity</th>
-														<th class="text-end">Unit Price</th>
-														<th class="text-end">Sub Total</th>
-													</tr>
-													<tr>
-														<td class="text-center">1</td>
-														<td>
-															<p class="font-w600 mb-1">Website wireframe for 2 pages</p>
-															<div class="text-muted"><div class="text-muted">doloremque laudantium unde ut perspiciatis  omnis iste natus voluptatem accusantium Sed error sit </div></div>
-														</td>
-														<td class="text-center">8</td>
-														<td class="text-end">$2240</td>
-														<td class="text-end">$4,480</td>
-													</tr>
-													<tr>
-														<td colspan="4" class="fw-bold text-uppercase text-end">Total</td>
-														<td class="fw-bold text-end h4">$11,160</td>
-													</tr>
-												</tbody></table>
-											</div>
-										</div>
-										<div class="card-footer text-end">
-											<button type="button" class="btn btn-primary mb-1" onclick="javascript:window.print();"><i class="si si-wallet"></i> Pay Invoice</button>
-											<button type="button" class="btn btn-success mb-1" onclick="javascript:window.print();"><i class="si si-paper-plane"></i> Send Invoice</button>
-											<button type="button" class="btn btn-info mb-1" onclick="javascript:window.print();"><i class="si si-printer"></i> Print Invoice</button>
-										</div>
-									</div>
-								</div><!-- COL-END -->
-							</div>
-							<!-- ROW-1 CLOSED -->
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
 
+        .card-body {
+            padding: 10px;
+        }
 
-                        </div>
-                    </div>
+        .card-footer {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .float-start {
+            float: left;
+        }
+
+        .float-end {
+            float: right;
+        }
+
+        address {
+            font-style: normal;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f5f5f5;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-end {
+            text-align: right;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+
+        .h3 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .h4 {
+            font-size: 16px;
+        }
+
+        .mb-1 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="clearfix">
+                <div class="float-start">
+                    <h3 class="card-title mb-1">Invoice #{{ $order->id }}</h3>
                 </div>
-                    <!-- CONTAINER CLOSED -->
-             </div>
+                <div class="float-end">
+                    <h3 class="card-title">Date: {{ $order->order_date }}</h3>
+                </div>
+            </div>
+            <hr>
+            <div class="row clearfix">
+                <div class="float-start" style="width: 48%;">
+                    <p class="h3">Invoice From:</p>
+                    <address>
+                        E store<br>
+                        Uttera Ajompur<br>
+                        Dhaka, Bangladesh<br>
+                        Email: ahmedrifat@email.com
+                    </address>
+                </div>
+                <div class="float-end" style="width: 48%; text-align: right;">
+                    <p class="h3">Invoice To:</p>
+                    <address>
+                        Name:{{ $order->customer->first_name.$order->customer->last_name }}<br>
+                        Phone:{{ $order->customer->phone}}<br>
+                        Address:{{ $order->delivery_address }}<br>
+                        Email:{{ $order->customer->email }}
+                    </address>
+                </div>
+            </div>
 
-
+            <table>
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Item</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-end">Unit Price</th>
+                        <th class="text-end">Sub Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($order->orderDetails as $key => $item)
+                        <tr>
+                            <td class="text-center">{{ $key + 1 }}</td>
+                            <td>
+                                <strong>{{ $item->product_name }}</strong><br>
+                                Code: {{ $item->product_code }}<br>
+                                Color: {{ $item->product_color }}<br>
+                                Size: {{ $item->product_size }}
+                            </td>
+                            <td class="text-center">{{ $item->product_qty }}</td>
+                            <td class="text-end">Tk {{ number_format($item->product_price, 2) }}</td>
+                            <td class="text-end">Tk {{ number_format($item->product_price * $item->product_qty, 2) }}</td>
+                        </tr>
+                    @endforeach
+                    <tr>
+                        <td colspan="4" class="fw-bold text-uppercase text-end">Grand Total</td>
+                        <td class="fw-bold text-end h4">Tk {{ number_format($item->product_price * $item->product_qty, 2) }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
 
-    </body>
-@endsection
+</body>
+</html>

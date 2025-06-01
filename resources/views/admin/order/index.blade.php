@@ -101,7 +101,7 @@
                                                         <a class="btn btn-sm btn-outline-info border me-2" href="{{route('order.details',$order->id)}}" title="Order Detail">
                                                             <i class="fe fe-bookmark"></i>
                                                         </a>
-                                                        <a class="btn btn-sm btn-outline-primary border me-2" href="{{route('order.edit',$order->id)}}" title="Order Edit">
+                                                        <a class="btn btn-sm btn-outline-primary border me-2 {{ $order->order_status == 'complete' ?  'disabled' : '' }}" href="{{route('order.edit',$order->id)}}" title="Order Edit">
                                                             <i class="fe fe-edit"></i>
                                                         </a>
                                                         <a class="btn btn-sm btn-outline-success border me-2" href="{{route('order.invoice',$order->id)}}" title="Order Invoice">
@@ -113,7 +113,7 @@
                                                         <form action="{{route('order.destroy',$order->id)}}" method="POST">
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button type="submit" class="btn btn-sm btn-outline-danger border me-2" data-bs-toggle="tooltip" data-bs-original-title="Delete">
+                                                            <button type="submit" class="btn btn-sm btn-outline-danger border me-2 {{ $order->order_status == 'cancel' ? 'disabled' : ''}}"  onclick="return confirm('Are You Sure')" data-bs-toggle="tooltip" data-bs-original-title="Delete">
                                                                 <i class="fe fe-trash-2"></i>
                                                             </button>
                                                         </form>

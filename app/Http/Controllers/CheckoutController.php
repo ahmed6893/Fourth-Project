@@ -48,6 +48,7 @@ class CheckoutController extends Controller
             $this->orderDetail->product_qty  = $item->qty;
             $this->orderDetail->product_color =$item->options->color;
             $this->orderDetail->product_size =$item->options->size;
+            $this->orderDetail->product_image = $item->options->image;
             $this->orderDetail->save();
 
             Cart::remove($item->rowId);

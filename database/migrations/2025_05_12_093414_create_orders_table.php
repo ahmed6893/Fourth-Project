@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('delivery_address');
             $table->string('delivery_status')->default('pending');
             $table->text('delivery_date')->nullable();
-            $table->text('delivery_timestrap')->nullable();
+            $table->text('delivery_timestamp')->nullable();
             $table->string('payment_method');
             $table->string('payment_status')->default('pending');
             $table->text('payment_date')->nullable();
