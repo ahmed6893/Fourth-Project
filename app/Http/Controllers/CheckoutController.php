@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderMail;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderDetails;
 use Session;
 use Cart;
+use Illuminate\Support\Facades\Mail as FacadesMail;
+use Mail;
 
 class CheckoutController extends Controller
 {
@@ -53,6 +57,10 @@ class CheckoutController extends Controller
 
             Cart::remove($item->rowId);
         }
+        $title = 'Thank You For Your Order';
+        $body = 'Wellcome to our Website';
+
+        Mail::to(Customer::find($this->order->customer_id)->email)->send(new OrderMail($title,$body));
         return redirect('/complete-order')->with('success','You order save successfully.Please wait we will contact with you soon');
     }
 
