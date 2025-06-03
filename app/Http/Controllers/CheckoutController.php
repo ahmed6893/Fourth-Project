@@ -28,10 +28,11 @@ class CheckoutController extends Controller
 
     }
 
-    public $order , $orderDetail ;
+    public $order , $orderDetail,$sslCommerze ;
     public function newOrder(Request $request)
     {
-        $this->order = new Order();
+       if($request->payment_method == 'cash'){
+         $this->order = new Order();
         $this->order->customer_id = Session::get('customerId');
         $this->order->order_total = Session::get('order_total');
         $this->order->tax_total = Session::get('tax_total');
@@ -62,6 +63,11 @@ class CheckoutController extends Controller
 
         Mail::to(Customer::find($this->order->customer_id)->email)->send(new OrderMail($title,$body));
         return redirect('/complete-order')->with('success','You order save successfully.Please wait we will contact with you soon');
+       }else{
+        $customer=Customer::find(Session::get('customerId'));
+        $this->sslCommerze = new SslCommerzPaymentController();
+        $this->sslCommerze->index($request ,$customer);
+       }
     }
 
     public function completeOrder()

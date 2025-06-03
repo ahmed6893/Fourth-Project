@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use Illuminate\Contracts\View\View as ViewView;
 use View;
+use App\Http\Middleware\VerifyCsrfToken;
 
 use Illuminate\Support\ServiceProvider;
 
