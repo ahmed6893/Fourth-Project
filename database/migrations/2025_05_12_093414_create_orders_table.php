@@ -30,7 +30,7 @@ return new class extends Migration
             $table->text('payment_date')->nullable();
             $table->text('payment_timestamp')->nullable();
             $table->string('currency')->default('BDT');
-            $table->text('transaction')->nullable();
+            $table->text('transaction_id')->nullable();
             $table->timestamps();
         });
     }
