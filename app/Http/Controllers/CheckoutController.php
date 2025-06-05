@@ -62,7 +62,7 @@ class CheckoutController extends Controller
         $body = 'Wellcome to our Website';
 
         Mail::to(Customer::find($this->order->customer_id)->email)->send(new OrderMail($title,$body));
-        return redirect('/complete-order')->with('success','You order save successfully.Please wait we will contact with you soon');
+        return redirect()->to('/complete-order')->with('success','You order save successfully.Please wait we will contact with you soon');
        }else{
         $customer=Customer::find(Session::get('customerId'));
         $this->sslCommerze = new SslCommerzPaymentController();
