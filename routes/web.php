@@ -16,6 +16,7 @@ use App\Http\Controllers\CourierController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\CustomerDashboardController;
 
 Route::get('/',                        [EstoreController::class,'index'])             ->name('home');
 Route::get('/estore/{id}',             [EstoreController::class,'product'])           ->name('estore');
@@ -38,6 +39,8 @@ Route::post('/customer/login',   [CustomerController::class,'loginCheck'])      
 Route::get('/customer/logout',   [CustomerController::class,'logout'])          ->name('customer.logout');
 Route::get('/customer/register', [CustomerController::class,'register'])        ->name('customer.register');
 Route::post('/customer/register',[CustomerController::class,'saveNewCustomer'])->name('customer.register');
+
+Route::get('/customer/dashboard',[CustomerDashboardController::class,'index'])->name('customer.dashboard');
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

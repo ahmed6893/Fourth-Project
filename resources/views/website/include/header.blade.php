@@ -65,7 +65,7 @@
                                 </li>
                                 @if (Session('customerId'))
                                     <li>
-                                        <a href=""><i class="mdi mdi-account"></i>Wellcome{{ Session('customerName') }}</a>
+                                        <a href="{{ route('customer.dashboard') }}"><i class="mdi mdi-account"></i>Wellcome{{ Session('customerName') }}</a>
                                     </li>
                                     <li>
                                         <a href=""><i class="mdi mdi-logout"></i>Sign Out</a>

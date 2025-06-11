@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Session;
 
-class ControllerDashboardController extends Controller
+class CustomerDashboardController extends Controller
 {
-    public function index()
-    {
-        return view('website.customer.index');
-    }
+	public function index()
+{
+    $orders = Order::with(['customer', 'orderDetails'])
+        ->where('customer_id', Session::get('customerId'))
+        ->get();
+
+    return view('website.customer.index', compact('orders'));
+}
+
 
     public function order()
     {
