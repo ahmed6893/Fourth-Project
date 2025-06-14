@@ -40,7 +40,9 @@ Route::get('/customer/logout',   [CustomerController::class,'logout'])          
 Route::get('/customer/register', [CustomerController::class,'register'])        ->name('customer.register');
 Route::post('/customer/register',[CustomerController::class,'saveNewCustomer'])->name('customer.register');
 
+Route::middleware('auth:customer')->group(function(){
 Route::get('/customer/dashboard',[CustomerDashboardController::class,'index'])->name('customer.dashboard');
+});
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

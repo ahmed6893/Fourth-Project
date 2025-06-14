@@ -38,7 +38,20 @@
 
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="{{asset('/')}}website/assets/css/style.css">
-    
+
+<style>
+    .sidebar-wrapper {
+        position: sticky;
+        top: 120px; /* adjust as needed */
+        align-self: start;
+    }
+    .list-group-item:hover {
+        background-color: #007bff;
+        color: white;
+        font-weight: 500;
+        transition: 0.2s;
+    }
+</style>
 
 </head>
 
