@@ -9,12 +9,12 @@
     <!-- Left Sidebar -->
     <div class="col-md-3 d-flex justify-content-center sidebar-wrapper">
         <div class="list-group w-100">
-            <a href="{{ url('customer/dashboard/orders') }}"
-               class="list-group-item list-group-item-action {{ request()->is('customer/dashboard/orders') ? 'active bg-primary text-white' : '' }}">
+            <a href="{{ url('/customer/order') }}"
+               class="list-group-item list-group-item-action {{ request()->is('/customer/order') ? 'active bg-primary text-white' : '' }}">
                 My Orders
             </a>
-            <a href="{{ url('customer/dashboard/password') }}"
-               class="list-group-item list-group-item-action {{ request()->is('customer/dashboard/password') ? 'active bg-primary text-white' : '' }}">
+            <a href="{{ url('/customer/updatePassword') }}"
+               class="list-group-item list-group-item-action {{ request()->is('/customer/updatePassword') ? 'active bg-primary text-white' : '' }}">
                 Change Password
             </a>
             <a href="{{ url('/customer/dashboard') }}"
@@ -53,7 +53,7 @@
               <div class="profile-body">
                 <div class="profile-title">
                   <h5 class="title">Personal Details</h5>
-                  <a class="profile-link" href="javascript:void(0)">edit</a>
+                  <a class="profile-link" href="{{ route('customer.password') }}">edit</a>
                 </div>
                 <div class="profile-details">
                   <div class="single-details-item d-flex flex-wrap">

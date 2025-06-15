@@ -41,7 +41,10 @@ Route::get('/customer/register', [CustomerController::class,'register'])        
 Route::post('/customer/register',[CustomerController::class,'saveNewCustomer'])->name('customer.register');
 
 Route::middleware('auth:customer')->group(function(){
-Route::get('/customer/dashboard',[CustomerDashboardController::class,'index'])->name('customer.dashboard');
+Route::get('/customer/dashboard',[CustomerDashboardController::class,'index']) ->name('customer.dashboard');
+Route::get('/customer/order',[CustomerDashboardController::class,'order']) ->name('customer.order');
+Route::get('/customer/updatePassword',[CustomerDashboardController::class,'password'])->name('customer.password');
+Route::post('/customer/password',[CustomerDashboardController::class,'update'])->name('customer.update');
 });
 
 // SSLCOMMERZ Start
