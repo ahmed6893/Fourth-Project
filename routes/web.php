@@ -17,6 +17,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\CustomerDashboardController;
+use App\Http\Controllers\AdminCustomerController;
 
 Route::get('/',                        [EstoreController::class,'index'])             ->name('home');
 Route::get('/estore/{id}',             [EstoreController::class,'product'])           ->name('estore');
@@ -83,5 +84,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::get('/order/invoice/{id}',         [OrderController::class,'invoice'])        ->name('order.invoice');
     Route::get('/order/download-invoice/{id}',[OrderController::class,'downloadInvoice'])->name('order.download-invoice');
     Route::delete('/order/destroy/{id}',      [OrderController::class,'destroy'])        ->name('order.destroy');
+
+    Route::get('/allcustomer',      [AdminCustomerController::class,'index'])        ->name('admin.customers');
+    Route::get('/customer/destroy/{id}',      [AdminCustomerController::class,'destroy']) ->name('admin.customer.destroy');
 
 });

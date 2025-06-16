@@ -5,14 +5,26 @@
   <div class="container">
     <div class="row d-flex align-items-start">
 
-      {{-- Sidebar --}}
-      <div class="col-md-3 d-flex justify-content-center sidebar-wrapper">
+    <div class="col-md-3 d-flex justify-content-center sidebar-wrapper">
         <div class="list-group w-100">
-            <a href="{{ url('customer/dashboard/orders') }}" class="list-group-item list-group-item-action {{ request()->is('customer/dashboard/orders') ? 'active bg-primary text-white' : '' }}">My Orders</a>
-            <a href="{{ url('/customer/password') }}" class="list-group-item list-group-item-action {{ request()->is('/customer/password') ? 'active bg-primary text-white' : '' }}">Edit Profile</a>
-            <a href="{{ url('customer/dashboard/notifications') }}" class="list-group-item list-group-item-action {{ request()->is('customer/dashboard/notifications') ? 'active bg-primary text-white' : '' }}">Notifications</a>
+            <a href="{{ url('/customer/dashboard') }}"
+               class="list-group-item list-group-item-action {{ request()->is('/customer/dashboard') ? 'active bg-primary text-white' : '' }}">
+                Dashboard
+            </a>
+            <a href="{{ url('/customer/order') }}"
+               class="list-group-item list-group-item-action {{ request()->is('/customer/order') ? 'active bg-primary text-white' : '' }}">
+                My Orders
+            </a>
+            <a href="{{ url('/customer/updatePassword') }}"
+               class="list-group-item list-group-item-action {{ request()->is('/customer/updatePassword') ? 'active bg-primary text-white' : '' }}">
+                Edit Profile
+            </a>
+            <a href="{{ url('customer/dashboard/notifications') }}"
+               class="list-group-item list-group-item-action {{ request()->is('customer/dashboard/notifications') ? 'active bg-primary text-white' : '' }}">
+                Notifications
+            </a>
         </div>
-      </div>
+    </div>
 
       {{-- Form --}}
       <div class="col-md-9">

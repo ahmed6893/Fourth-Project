@@ -10,6 +10,12 @@
                     <div class="login-registration-style-2 mt-50">
                         <h1 class="heading-4 font-weight-500 title">Login</h1>
                         <div class="login-registration-form pt-10">
+                                 @if(session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{ session('error') }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
                             <form action="{{route('customer.login')}}" method="POST">
                                 @csrf
                                 <div class="single-form form-default form-border">

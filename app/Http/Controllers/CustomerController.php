@@ -44,7 +44,7 @@ class CustomerController extends Controller
                     }
                 return redirect('/')->with('success','Login Successfull');
         }else{
-            return back()->with('error','please use valid email or phone');
+            return back()->with('error','Please use valid email or phone');
         }
 
     }

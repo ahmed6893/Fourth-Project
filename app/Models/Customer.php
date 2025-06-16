@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 
@@ -21,4 +22,10 @@ class Customer extends Authenticatable
         ]);
 
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
 }

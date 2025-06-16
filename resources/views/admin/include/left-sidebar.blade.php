@@ -67,6 +67,16 @@
                         <li><a href="{{ route('order') }}" class="slide-item">Orders</a></li>
                     </ul>
                 </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" viewBox="0 0 24 24"><path d="..."/></svg>
+                        <span class="side-menu__label">Customer Module</span><i class="angle fa fa-angle-right"></i>
+                    </a>
+
+                    <ul class="slide-menu">
+                        <li><a href="{{ route('admin.customers') }}" class="slide-item">All Customer </a></li>
+                    </ul>
+                </li>
 
             </ul>
             <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
