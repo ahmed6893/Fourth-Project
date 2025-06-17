@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Hash;
+
 
 class User extends Authenticatable
 {
@@ -29,6 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo_path',
     ];
 
     /**
@@ -63,5 +66,25 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public static function newUser($request)
+    {
+        $imgUrl = '';
+
+        if ($request->hasFile('image')) {
+            $image        = $request->file('image');
+            $imageName    = uniqid() . '.' . $image->getClientOriginalExtension();
+            $directory    = 'admin/image/user/';
+            $imgUrl       = $directory . $imageName;
+            $image->move(public_path($directory), $imageName);
+        }
+
+        User::create([
+            'name'               => $request->name,
+            'email'              => $request->email,
+            'password'           => Hash::make($request->password),
+            'profile_photo_path' => $imgUrl,
+        ]);
     }
 }

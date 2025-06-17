@@ -28,7 +28,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+        'name'     => 'required|string|max:255',
+        'email'    => 'required|email|unique:users,email',
+        'password' => 'required|string|min:6|confirmed',
+        'image'    => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        User::newUser($request);
+        return back()->with('success','User Info Created Successfully');
     }
 
     /**
@@ -44,7 +52,7 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.user.edit')
+        return view('admin.user.edit');
     }
 
     /**

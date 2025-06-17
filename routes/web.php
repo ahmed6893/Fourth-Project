@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\CustomerDashboardController;
 use App\Http\Controllers\AdminCustomerController;
+use App\Http\Controllers\UserController;
 
 Route::get('/',                        [EstoreController::class,'index'])             ->name('home');
 Route::get('/estore/{id}',             [EstoreController::class,'product'])           ->name('estore');
@@ -74,6 +75,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
     Route::resource('size',         SizeController::class);
     Route::resource('courier',      CourierController::class);
     Route::resource('product',      ProductController::class);
+
+    Route::resource('user',      UserController::class);
 
 
 

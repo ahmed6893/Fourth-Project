@@ -30,7 +30,8 @@
                         <div class="card">
                             <div class="card-body p-4">
                                 <div class="card-header border-bottom d-flex justify-content-between">
-                                    <h3 class="card-title">All Customers Info</h3>
+                                    <h3 class="card-title">All Users Info</h3>
+                                    <a href="{{route('user.create')}}" class="btn btn-primary">Add User</a>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +55,6 @@
                                             <th class="bg-transparent border-bottom-0">Name</th>
                                             <th class="bg-transparent border-bottom-0">Email</th>
                                             <th class="bg-transparent border-bottom-0">Phone</th>
-                                            <th class="bg-transparent border-bottom-0">Order Date</th>
                                             <th class="bg-transparent border-bottom-0 no-btn">Action</th>
                                         </tr>
                                         </thead>
@@ -63,7 +63,7 @@
                                         <tr>
                                             <td class="text-muted fs-15 fw-semibold text-center">{{$loop->iteration}}</td>
                                             <td>
-                                                <img src="{{asset($user->user_image)}}" alt="NO Image" width="50" height="50">
+                                                <img src="{{asset($user->profile_photo_path)}}" alt="NO Image" width="50" height="50">
                                             </td>
                                             <td>
                                                 <h6 class="mb-0 fs-14 fw-semibold">{{$user->name}}</h6>
@@ -74,14 +74,10 @@
                                             <td>
                                                 <h6 class="mb-0 fs-14 fw-semibold">{{$user->phone}}</h6>
                                             </td>
-                                            <td>
-                                                @if ($user->order->count()>0)
-                                                    {{ \Carbon\Carbon::parse($user->order->last()->order_date)->format('d-m-y') }}
-                                                @endif
-                                            </td>
+
                                             <td>
                                                 <div class="d-flex align-items-stretch">
-                                                    <form action="{{ route('admin.customer.destroy',$customer->id) }}" method="POST" onclick="return confirm('Are you sure you want to delete this Customer')">
+                                                    <form action="{{ route('admin.customer.destroy',$user->id) }}" method="POST" onclick="return confirm('Are you sure you want to delete this User')">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-sm btn-outline-secondary border me-2" data-bs-toggle="tooltip" data-bs-original-title="Delete">
