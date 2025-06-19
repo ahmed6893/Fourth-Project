@@ -19,7 +19,7 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    
+
     public function index()
     {
         return view('admin.product.index',['products' => Product::all()]);
@@ -54,7 +54,7 @@ class ProductController extends Controller
 
         return back()->with('success','Your Product Info Created Successfully');
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -88,10 +88,10 @@ class ProductController extends Controller
         ProductColor::updateProductColor($request->color,$product->id);
         ProductSize::updateProductSize($request->size,$product->id);
         if($request->hasFile('other_images')){
-            OtherImages::updateOtherImages($request->file('other_images'),$product->id);   
+            OtherImages::updateOtherImages($request->file('other_images'),$product->id);
         }
         return back()->with('success','Product Has Updated Successfully');
-        
+
     }
 
     /**
